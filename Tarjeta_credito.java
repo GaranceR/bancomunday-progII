@@ -10,12 +10,12 @@ public class Tarjeta_credito extends Herencia_tarjetas{
     }
 
     @Override
-    protected int abono(String[] datos) {
+    protected int abonar(String[] datos) {
     
     }
 
     @Override
-    protected int carga(String[] datos) {
+    protected int cargar(String[] datos) {
     
     }
 
@@ -27,6 +27,11 @@ public class Tarjeta_credito extends Herencia_tarjetas{
     @Override
     protected int comprarInversion(String[] datos) {
     
+    }
+    
+    @Override
+    protected String recibirTransferencia(String[] datosE, String[] datosS) {
+    	
     }
 
     @Override
