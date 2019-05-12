@@ -10,7 +10,7 @@ public class ArchivosBancoMunday {
     private FileWriter escritor;
     private BufferedWriter bufferE;
     private BufferedReader bufferL;
-    private List<String> datos=new ArrayList<String>();
+    private String[] datos;
     
     private void escribirOUT(String cuenta)throws IOException{
         this.lector=null;
@@ -63,7 +63,6 @@ public class ArchivosBancoMunday {
     }
     private void leer(String arch)throws IOException{
         String texto;
-        String[] partes;
         archivo=null;
         lector=null;
         bufferL=null;
@@ -72,10 +71,7 @@ public class ArchivosBancoMunday {
             lector=new FileReader(archivo);
             bufferL=new BufferedReader(lector);
             while((texto=bufferL.readLine())!=null){
-                partes=texto.split(",");
-                for(String linea:partes){
-                    System.out.println(linea);
-                }
+                this.datos=texto.split(",");
             }
         }catch(FileNotFoundException ex){
             System.out.println("Error, archivo no encontrado...");
@@ -83,20 +79,5 @@ public class ArchivosBancoMunday {
             if(bufferL!=null){bufferL.close();}
         }
     }
-    /*private void lectura(String cuenta)throws IOException{
-        this.archivo=new File(this.rutaCarpeta+cuenta+".in");
-        FileReader leer=null;
-        try{
-            leer=new FileReader(this.archivo);
-            int c;
-            while((c=leer.read())!=-1){
-                System.out.print(c);
-            }
-        }catch(FileNotFoundException ex){
-            System.out.println("Error al realizar la operacion...\n"+ex);
-        }finally{
-            leer.close();
-        }
-    }*/
     
 }
