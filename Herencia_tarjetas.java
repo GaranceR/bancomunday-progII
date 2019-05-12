@@ -1,7 +1,9 @@
 package bancomunday;
 import java.util.ArrayList;
 import java.util.List;
+
 public abstract class Herencia_tarjetas {
+	
     protected ArchivosBancoMunday archivo;
     protected abstract int abono(String[] datos);
     protected abstract int carga(String[] datos);

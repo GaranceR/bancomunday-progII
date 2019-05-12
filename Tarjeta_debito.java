@@ -1,8 +1,12 @@
 package bancomunday;
+
 public class Tarjeta_debito extends Herencia_tarjetas{
+	
     private int a;
+    
     public Tarjeta_debito(){
     }
+    
     @Override
     protected int abono(String[] datos) {
     

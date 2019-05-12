@@ -1,7 +1,9 @@
 package bancomunday;
 import java.io.*;
 import java.util.*;
+
 public class ArchivosBancoMunday {
+	
     private String rutaCarpeta="...\\BancoMunday\\Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
     private File archivo;
     private FileReader lector;
