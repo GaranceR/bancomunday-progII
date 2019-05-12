@@ -5,8 +5,8 @@ import java.util.List;
 public abstract class Herencia_tarjetas {
 	
     protected ArchivosBancoMunday archivo;
-    protected abstract int abono(String[] datos);
-    protected abstract int carga(String[] datos);
+    protected abstract int abonar(String[] datos);
+    protected abstract int cargar(String[] datos);
     protected abstract int comprarPagar(String[] datos);/*{
         /*int monto;
         String descripcion;
@@ -29,6 +29,8 @@ public abstract class Herencia_tarjetas {
         monto=this.dato.nextInt();
         return this.saldo+monto;
     }*/
+    protected abstract String recibirTransferencia(String[] datosE, String[] datosS);
+
     protected abstract String realizarTransferencia(String[] datosE,String[] datosS);/*{
         int monto;
         String cuenta;
@@ -38,7 +40,7 @@ public abstract class Herencia_tarjetas {
         cuenta=this.dato.next();
         return cuenta+"-"+monto;
     }*/
-    protected void corteDeCuetna(String[] datos){
+    protected void corteDeCuenta(String[] datos){
         
     }
 }
