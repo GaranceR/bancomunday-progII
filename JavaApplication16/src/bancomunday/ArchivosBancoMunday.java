@@ -4,10 +4,12 @@ import java.util.*;
 
 public class ArchivosBancoMunday {
 	
-    private String rutaCarpeta="...\\BancoMunday\\Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
+    private String rutaCarpeta="Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
     private File archivo;
     private FileReader lector;
     private FileWriter escritor;
+    private BufferedWriter bufferE;
+    private BufferedReader bufferL;
     private List<String> datos=new ArrayList<String>();
     
     private void escribirOUT(String cuenta)throws IOException{
@@ -57,6 +59,28 @@ public class ArchivosBancoMunday {
             this.archivo.mkdir();
         }catch(Exception ex){
             System.out.println(ex);
+        }
+    }
+    private void leer(String arch)throws IOException{
+        String texto;
+        String[] partes;
+        archivo=null;
+        lector=null;
+        bufferL=null;
+        try{
+            archivo=new File(this.rutaCarpeta+this.entradaC+arch);
+            lector=new FileReader(archivo);
+            bufferL=new BufferedReader(lector);
+            while((texto=bufferL.readLine())!=null){
+                partes=texto.split(",");
+                for(String linea:partes){
+                    System.out.println(linea);
+                }
+            }
+        }catch(FileNotFoundException ex){
+            System.out.println("Error, archivo no encontrado...");
+        }finally{
+            if(bufferL!=null){bufferL.close();}
         }
     }
     /*private void lectura(String cuenta)throws IOException{
