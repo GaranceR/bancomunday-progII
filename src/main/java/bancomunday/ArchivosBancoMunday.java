@@ -1,15 +1,17 @@
-package bancomunday;
+package src.main.java.bancomunday;
+
+
 import java.io.*;
 import java.util.*;
 
 public class ArchivosBancoMunday {
-	
-    private String rutaCarpeta="...\\BancoMunday\\Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
+
+    private String rutaCarpeta="..\\..\\content\\Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
     private File archivo;
     private FileReader lector;
     private FileWriter escritor;
     private List<String> datos=new ArrayList<String>();
-    
+
     private void escribirOUT(String cuenta)throws IOException{
         this.lector=null;
         this.archivo=new File(this.rutaCarpeta+this.salidas+cuenta+".out");
@@ -29,7 +31,7 @@ public class ArchivosBancoMunday {
                 }
             }
             for(String x:this.datos){
-                
+
             }
         }catch(FileNotFoundException ex){
             try{
@@ -74,5 +76,5 @@ public class ArchivosBancoMunday {
             leer.close();
         }
     }*/
-    
+
 }

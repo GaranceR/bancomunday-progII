@@ -1,9 +1,11 @@
-package bancomunday;
+package src.main.java.bancomunday;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Herencia_tarjetas {
-	
+
     protected ArchivosBancoMunday archivo;
     protected abstract int abonar(String[] datos);
     protected abstract int cargar(String[] datos);
@@ -41,6 +43,6 @@ public abstract class Herencia_tarjetas {
         return cuenta+"-"+monto;
     }*/
     protected void corteDeCuenta(String[] datos){
-        
+
     }
 }
