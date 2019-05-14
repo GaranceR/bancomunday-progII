@@ -4,11 +4,13 @@ import java.util.*;
 
 public class ArchivosBancoMunday {
 	
-    private String rutaCarpeta="...\\BancoMunday\\Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
+    private String rutaCarpeta="Archivos",entradaB="\\Banco",entradaC="\\Cargas",salidas="\\ClientesArchivos",cuenta;
     private File archivo;
     private FileReader lector;
     private FileWriter escritor;
-    private List<String> datos=new ArrayList<String>();
+    private BufferedWriter bufferE;
+    private BufferedReader bufferL;
+    private String[] datos;
     
     private void escribirOUT(String cuenta)throws IOException{
         this.lector=null;
@@ -59,20 +61,23 @@ public class ArchivosBancoMunday {
             System.out.println(ex);
         }
     }
-    /*private void lectura(String cuenta)throws IOException{
-        this.archivo=new File(this.rutaCarpeta+cuenta+".in");
-        FileReader leer=null;
+    private void leer(String arch)throws IOException{
+        String texto;
+        archivo=null;
+        lector=null;
+        bufferL=null;
         try{
-            leer=new FileReader(this.archivo);
-            int c;
-            while((c=leer.read())!=-1){
-                System.out.print(c);
+            archivo=new File(this.rutaCarpeta+this.entradaC+arch);
+            lector=new FileReader(archivo);
+            bufferL=new BufferedReader(lector);
+            while((texto=bufferL.readLine())!=null){
+                this.datos=texto.split(",");
             }
         }catch(FileNotFoundException ex){
-            System.out.println("Error al realizar la operacion...\n"+ex);
+            System.out.println("Error, archivo no encontrado...");
         }finally{
-            leer.close();
+            if(bufferL!=null){bufferL.close();}
         }
-    }*/
+    }
     
 }
