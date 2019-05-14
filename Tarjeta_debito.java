@@ -2,7 +2,7 @@ package bancomunday;
 
 public class Tarjeta_debito extends Herencia_tarjetas{
 	
-    private int a;
+    private int a; // ??
     
     public Tarjeta_debito(){
     }
