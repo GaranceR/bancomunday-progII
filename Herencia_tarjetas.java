@@ -6,9 +6,10 @@ public abstract class Herencia_tarjetas {
 	
     protected ArchivosBancoMunday archivo;
     protected List<String> operaciones = new ArrayList<String>();//Lista para despues enviar los datos de los archivos .out de la cuenta
-    protected abstract void abonar(String[] datos);
-    protected abstract void cargar(String[] datos);
-    protected void comprarPagar(String[] datos){
+    protected abstract String abonar(String[] datos);
+    protected abstract String cargar(String[] datos);
+    protected String comprarPagar(String[] datos){
+        String resultado="";
         /*int monto;
         String descripcion;
         System.out.print("Ingrese moto a pagar: ");
@@ -23,9 +24,10 @@ public abstract class Herencia_tarjetas {
             System.out.println("No es posible realizar la accion");
             return this.saldo;
         }*/
+        return resultado;
     }
-    protected void comprarInversion(String[] datos){
-
+    protected String comprarInversion(String[] datos){
+        String resultado="";
         //revisar saldo disponible CD
         //realizar pago
         //añadir datos a operaciones
@@ -33,17 +35,22 @@ public abstract class Herencia_tarjetas {
         System.out.print("Ingrese un monto: ");
         monto=this.dato.nextInt();
         return this.saldo+monto;*/
+        return resultado;
     }
-    protected void recibirTransferencia(String[] datos){
+    protected String recibirTransferencia(String[] datos){
+        String resultado="";
         //leer cuentaCD o TC para monto
         //aumentar el dinero
         //añadir datos a operaciones
+        return resultado;
     }
 
-    protected void realizarTransferencia(String[] datos){
+    protected String realizarTransferencia(String[] datos){
+        String resultado="";
         //leer cuenta CD o TC para monto
         //disminuir el dinero
         //añadir datos a operaciones
+        return resultado;
     }
     protected void corteDeCuenta(String cuenta){
         //crear .out con los datos
