@@ -8,17 +8,27 @@ public class Tarjeta_debito extends Herencia_tarjetas{
     }
 
     @Override
-    protected void abonar(String[] datos) {
-    
+    protected int abono(String[] datos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void cargar(String[] datos) {
-    
+    protected int carga(String[] datos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void comprarPagar(String[] datos) {
-    
+    protected int comprarPagar(String[] datos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected int comprarInversion(String[] datos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String realizarTransferencia(String[] datosE, String[] datosS) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
