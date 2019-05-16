@@ -12,6 +12,8 @@ public class ArchivosBancoMunday {
     private BufferedReader bufferL;
     private List<String> datos=new ArrayList<String>();
     
+    //Testing if I finally learned how to use Git
+    
     private void escribirOUT(String cuenta)throws IOException{
         this.lector=null;
         this.archivo=new File(this.rutaCarpeta+this.salidas+cuenta+".out");
