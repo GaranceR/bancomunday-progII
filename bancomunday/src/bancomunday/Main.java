@@ -19,7 +19,7 @@ public class Main {
     	// TEST to modify Class Banco with parameters directly
       	SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
       	//String dateString = format.format( new Date()   );
-    	java.util.Date date_test = format.parse("01/03/2019"); 
+    	Date date = format.parse("01/03/2019"); 
     	
     	Banco banco = new Banco(5000000, date, 300);
     	// TODO Get infos from archivos
