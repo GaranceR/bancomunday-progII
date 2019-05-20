@@ -8,20 +8,28 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Archivo {
-    
-    /*******************************************
-    * Class to implement the concept of Archives 
-    * and related methods such as : 
-    * - leerArchivo
-    * - escribirArchivo
-    * - leerOrdenes
-    * - leerArchivo
-    ********************************************/
-    
+
+        /*******************************************
+        * Class to implement the concept of Archives
+        * and related methods such as :
+        * - leerArchivo
+        * - escribirArchivo
+        * - leerOrdenes
+        * - leerArchivo
+        ********************************************/
+        private String route = "";
+
+        public Archivo(String route){
+            this.route = route;
+        }
+
         public ArrayList<ArrayList<String>> leerArchivo(String route){
-            
+
             String texto;
             File f1 = null;
             ArrayList<ArrayList<String>> tarjeta = new ArrayList<ArrayList<String>>();
@@ -43,9 +51,9 @@ public class Archivo {
                         clon =(ArrayList<String>) aux.clone();
                     }
                     tarjeta.add(clon);
-                    aux.clear(); 
+                    aux.clear();
                 }
-            
+
             }catch(IOException e){
                 System.out.println("Algo salio mal :( .");
             }finally{
@@ -56,21 +64,56 @@ public class Archivo {
                 }catch(IOException e2){
                     System.out.println("No se pudo cerrar el archivo.");
                 }
-            } 
+            }
         //System.out.println("AQUI TARJETA2: "+tarjeta);
         return tarjeta;
     }
-  
+
+
+
+    /**********************************
+     * Method implementing :
+     * - reading some content
+     * - from an existing file
+     * - at a specific location (url)
+     * - and returning the content as a List<List<String>>
+     *********************************/
+
+    public void read_from_file(String url) throws IOException{
+
+      // Initialize a List of Strings to capture content
+      List<List<String>> records = new ArrayList<>();
+
+      // Opening a BufferedReader to read the content from the file located at url
+      try (BufferedReader br = new BufferedReader(new FileReader(url))) {
+
+        String line;
+        // For each line
+        while ((line = br.readLine()) != null) {
+          // Using a comma delimiter
+          String[] values = line.split(",");
+          records.add(Arrays.asList(values));
+        }
+      }
+      // Printing out the content of the file Banco.in
+      for (int i = 0; i < records.size(); i++) {
+        System.out.println(records.get(i));
+      }
+      //return records;
+    }
+
+
+
     public void escribirArchivo(String route,String[][] tarjeta) throws IOException{
-        
+
         /**********************************
          * Method implementing :
-         * - writing some content (tarjeta) 
+         * - writing some content (tarjeta)
          * - to a (newly created?) file
          * - at a specific location (route)
          * - with a custom header starting with "#"
          *********************************/
-        
+
             FileWriter fichero = null;
             PrintWriter pw = null;
             try{
@@ -89,7 +132,7 @@ public class Archivo {
                     }
                 }
             }catch(Exception e){
-                    System.out.println("Algo salio mal .");    
+                    System.out.println("Algo salio mal .");
                 }finally{
                     try{
                         if(null != fichero)
@@ -100,15 +143,15 @@ public class Archivo {
                 }
         }
     public String leerOrdenes(String route){
-        
+
         /**********************************
          * Method implementing :
-         * - reading some content 
+         * - reading some content
          * - from an existing file
          * - at a specific location (route)
          * - and returning the content as a String
          *********************************/
-        
+
         String texto = null;
         File f1 = null;
         ArrayList<String> Ordenes = new ArrayList<>();
@@ -133,7 +176,7 @@ public class Archivo {
                 }catch(Exception e2){
                     System.out.println("No se pudo cerrar el archivo.");
                 }
-            } 
+            }
             return texto;
     }
 }
@@ -153,12 +196,12 @@ public ArrayList<String> leerArchivo(String route) throws FileNotFoundException{
                     String primertoken = tokens.nextToken();
                     String segundotoken = tokens.nextToken();
                     System.out.println(primertoken);
-                    i++;   
+                    i++;
                 }
             }catch(IOException e){
                 System.out.println("Algo salio mal :( .");
             }
-            
+
             return Tarjeta;
         }
 
