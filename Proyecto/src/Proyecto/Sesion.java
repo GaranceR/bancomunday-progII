@@ -18,6 +18,7 @@ public class Sesion {
         System.out.println("Las CuentasDebito son: "+cuentasCD);
         test1.cargarCredito(cuentasTC);
         System.out.println("Lasc CuentasCredito son: "+cuentasTC);
+        System.out.println("Las Operaciones son: ");
         test1.cargarSimulacion();
         
     }
