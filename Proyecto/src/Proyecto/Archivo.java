@@ -137,28 +137,3 @@ public class Archivo {
                 }
         }
 }
-/*
-public ArrayList<String> leerArchivo(String route) throws FileNotFoundException{
-            String texto;
-            int i = 0;
-            ArrayList<String> Tarjeta = new ArrayList<>();
-            try{
-                BufferedReader bf = new BufferedReader(new FileReader(route));
-                String bfRead;
-                while ((bfRead = bf.readLine())!=null){
-                    Tarjeta.add(bfRead);
-                    String aux = Tarjeta.get(i);
-                    StringTokenizer tokens = new StringTokenizer(aux);
-                    String primertoken = tokens.nextToken();
-                    String segundotoken = tokens.nextToken();
-                    System.out.println(primertoken);
-                    i++;
-                }
-            }catch(IOException e){
-                System.out.println("Algo salio mal :( .");
-            }
-
-            return Tarjeta;
-        }
-
-*/
