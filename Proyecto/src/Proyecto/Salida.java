@@ -87,7 +87,7 @@ public class Salida {
 
     }
     
-    public void salidaCredito(ArrayList List){
+    public void salidaCredito(ArrayList ListOfClientes){
 // Used to get the current date - to be improved..
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
 	LocalDate localDate = LocalDate.now();
@@ -125,6 +125,6 @@ public class Salida {
         // Just for testing purpose
         Archivo test_archivo = new Archivo();
         ArrayList<ArrayList<String>> payload = new ArrayList<>();
-        list1 = arc1.leerArchivo("content/Archivos/Cargas/Simulador.in");
+        //list1 = arc1.leerArchivo("content/Archivos/Cargas/Simulador.in");
     }
 }

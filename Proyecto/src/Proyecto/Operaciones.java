@@ -5,9 +5,13 @@
  */
 package Proyecto;
 
+import java.util.ArrayList;
+
 public class Operaciones {
-    public void Abonar(){
-        
+
+    public void Abonar(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasCD,Banco Muday){
+        for (int i = 0; i < TarjetasDB.size(); i++) {
+        }
     }
     public void Cargar(){
         
