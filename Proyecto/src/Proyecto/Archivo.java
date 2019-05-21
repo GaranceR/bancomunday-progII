@@ -2,13 +2,11 @@ package Proyecto;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,14 +64,14 @@ public class Archivo {
 
 
     /**********************************
-     * Method implementing :
-     * - reading some content
-     * - from an existing file
-     * - at a specific location (url)
-     * - and returning the content as a List<List<String>>
+     * Metodo Implementa :
+     * - Leer contenido
+     * - de un archivo ya existente
+     * - de una ruta especifica(url)
+     * - y retorna una List<List<String>>
      *********************************/
 
-    public void read_from_file(String url) throws IOException{
+    public List<List<String>> read_from_file(String url) throws IOException{
 
       // Initialize a List of Strings to capture content
       List<List<String>> records = new ArrayList<>();
@@ -92,9 +90,10 @@ public class Archivo {
       }
       // Printing out the content of the file Banco.in
       for (int i = 0; i < records.size(); i++) {
+        
         System.out.println(records.get(i));
       }
-      //return records;
+      return records;
     }
 
 

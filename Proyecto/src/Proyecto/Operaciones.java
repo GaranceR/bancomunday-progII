@@ -21,6 +21,9 @@ public class Operaciones {
     public void Recibir_Transferencia(){
         
     }
+    public void Realizar_Transferencia(){
+        
+    }
     public void Generar_Corte(){
         
     }

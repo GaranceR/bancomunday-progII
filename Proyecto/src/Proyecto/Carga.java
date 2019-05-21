@@ -124,7 +124,53 @@ public class Carga {
         }
     }
     public void cargarSimulacion() throws IOException{
+        Operaciones op = new Operaciones(); 
         Archivo arc1 = new Archivo();
-        arc1.read_from_file("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\bancomunday\\content\\Archivos\\Cargas\\Simulador.in");
+        ArrayList<ArrayList<String>> list1 = new ArrayList<>();
+        list1 = arc1.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\bancomunday\\content\\Archivos\\Cargas\\Simulador.in");
+        for (int i = 1; i < list1.size(); i++) {
+            System.out.println(list1.get(i));
+            if ("NEXTDAY".equals(list1.get(i).get(0))){
+                op.Next_Day();
+                //Change date
+            }
+            else if ("---------------------------------------------------------------------------".equals(list1.get(i).get(0))){
+            }
+            else{
+                String numero = list1.get(i).get(1);
+                switch (numero){
+                    case "1":
+                        op.Abonar();
+                        //Do something
+                        break;
+                    case "2":
+                        op.Cargar();
+                        //Do Something
+                        break;
+                    case "3":
+                        op.Comprar_Pagar();
+                        //Do something
+                        break;
+                    case "4":
+                        op.Comprar_Inversion();
+                        //Do something
+                        break;
+                    case "5":
+                        op.Recibir_Transferencia();
+                        //Do something
+                        break;
+                    case "6":
+                        op.Realizar_Transferencia();
+                        //Do Something
+                        break;
+                    case "7":
+                        op.Generar_Corte();
+                        //Do something
+                        break;
+                    default:
+                        //Do Something
+                }
+            }
+        }
     }
 }
