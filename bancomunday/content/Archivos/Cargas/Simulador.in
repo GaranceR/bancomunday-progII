@@ -1,0 +1,21 @@
+#Cuenta, Operacion, detallesOperacion
+#NEXTDAY, #dias
+CD10-1234, 3, 5500, Chorrillana Local JPerez Valpo
+CD16-2077, 3, 7200, Cerveza Kunstmann 1L
+CD10-1234, 6, 7000, Pancho Saavedra, CD, 2077, false, Pago parte Papajohns
+NEXTDAY, 2
+CD10-1234, 3, 1200, Almuerzo Junaeb CIAE 
+CD16-2077, 3, 3600, Almuerzo Extra CIAE 
+NEXTDAY, 1 
+CD10-1234, 3, 3600, Almuerzo Extra CIAE 
+NEXTDAY, 1 
+TC10-1234, 3, 45000, Juego Mario Party 10 Nintento Switch, 2 
+TC16-2077, 3, 40000, TWISTED METAL I PS1, 2 
+CD10-1234, 7, 2/3/2019, 4/3/2019
+TC16-2077, 7, 2/3/2019, 4/3/2019
+NEXTDAY, 31
+---------------------------------------------------------------------------
+CD10-1234, 1, 100000
+NEXTDAY, 1 
+CD10-1234, 4, 25000, Librería la lectura 
+NEXTDAY, 30
