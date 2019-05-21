@@ -6,5 +6,25 @@
 package Proyecto;
 
 public class Operaciones {
-    
+    public void Abonar(){
+        
+    }
+    public void Cargar(){
+        
+    }
+    public void Comprar_Pagar(){
+        
+    }
+    public void Comprar_Inversion(){
+        
+    }
+    public void Recibir_Transferencia(){
+        
+    }
+    public void Generar_Corte(){
+        
+    }
+    public void Next_Day(){
+        
+    }
 }
