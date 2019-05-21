@@ -5,8 +5,8 @@ import java.util.Date;
 public class Banco {
     
     /*************************************************
-    * Class to implement the concept of Banks 
-    * and related methods such as : 
+    * Clase para implementar el concepto de Banco 
+    * y metodos relacionados como: 
     * - get/set Patrimonio
     * - get/set FechaInicio
     * - get/set ComisionBancaria
@@ -19,15 +19,9 @@ public class Banco {
     * and an overriden toString() method ! 
     **************************************************/
 
-	Integer patrimonio;
-	Date fechaInicio;
-	Integer comisionBancaria;
-	
-	public Banco(Integer patrimonio, Date fechaInicio, Integer comisionBancaria) {
-		this.patrimonio = patrimonio;
-		this.fechaInicio = fechaInicio;
-		this.comisionBancaria = comisionBancaria;
-	}
+	private Integer patrimonio;
+	private String fechaInicio;
+	private Integer comisionBancaria;
 	
 	public Integer getPatrimonio() {
 		return patrimonio;
@@ -35,10 +29,10 @@ public class Banco {
 	public void setPatrimonio(Integer patrimonio) {
 		this.patrimonio = patrimonio;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 	public Integer getComisionBancaria() {

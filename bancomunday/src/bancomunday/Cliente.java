@@ -1,10 +1,12 @@
 package bancomunday;
 
+import java.util.ArrayList;
+
 public class Cliente {
     
     /*************************************************
-    * Class to implement the concept of Clients 
-    * and related methods such as getters and /setters for : 
+    * Clase para implementar el conepto de Clientes
+    * y metodos relacionados como los getters & setters para: 
     * - RUT, nombre, ocupacion, correo, 
     * - telefono, nombreUsuario, contrasena, morosidad
     * 
@@ -18,23 +20,10 @@ public class Cliente {
 	private String correo;
 	private String telefono;
 	
-	// Esos son los atributos del Usuario -> Clase a parte o no ? 
-        // Hippo : Creo que no, eso esta bien
 	
 	private String nombreUsuario;
 	private String contrasena;
-	private boolean morosidad;
-	
-	public Cliente (String RUT, String nombre, String ocupacion, String correo, String telefono, String nombreUsuario, String contrasena, boolean morosidad){
-		this.RUT = RUT;
-		this.nombre = nombre;
-		this.ocupacion = ocupacion;
-		this.correo = correo;
-		this.telefono = telefono;
-		this.nombreUsuario = nombreUsuario;
-		this.contrasena = contrasena;
-		this.morosidad = morosidad;
-	}
+	private String morosidad;
 	
 	public String getNombre() {
 		return nombre;
@@ -45,8 +34,8 @@ public class Cliente {
 	public String getRUT() {
 		return RUT;
 	}
-	public void setRUT(String rUT) {
-		RUT = rUT;
+	public void setRUT(String RUT) {
+		this.RUT = RUT;
 	}
 	public String getOcupacion() {
 		return ocupacion;
@@ -78,12 +67,27 @@ public class Cliente {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-	public boolean isMorosidad() {
-		return morosidad;
-	}
-	public void setMorosidad(boolean morosidad) {
-		this.morosidad = morosidad;
-	}
+
+        public String getMorosidad() {
+            return morosidad;
+        }
+
+        public void setMorosidad(String morosidad) {
+            this.morosidad = morosidad;
+        }
+	
+        public ArrayList<String> Asignar(){
+            ArrayList<String> asig = new ArrayList<>();
+            asig.add(RUT);
+            asig.add(nombre);
+            asig.add(ocupacion);
+            asig.add(correo);
+            asig.add(telefono);
+            asig.add(nombreUsuario);
+            asig.add(contrasena);
+            asig.add(morosidad);
+            return asig;
+        }
 	@Override
 	public String toString() {
 		return "Cliente RUT : " + this.RUT + " Nombre : " + this.nombre + " Ocupacion : " + this.ocupacion

@@ -15,19 +15,14 @@ import java.util.List;
 public class Archivo {
 
         /*******************************************
-        * Class to implement the concept of Archives
-        * and related methods such as :
+        * Clase para implementar el concepto de Archivos
+        * y sus metodos relacionados como :
         * - leerArchivo
         * - escribirArchivo
         * - leerOrdenes
         * - leerArchivo
         ********************************************/
-        private String route = "";
-
-        public Archivo(String route){
-            this.route = route;
-        }
-
+        
         public ArrayList<ArrayList<String>> leerArchivo(String route){
 
             String texto;
@@ -65,7 +60,6 @@ public class Archivo {
                     System.out.println("No se pudo cerrar el archivo.");
                 }
             }
-        //System.out.println("AQUI TARJETA2: "+tarjeta);
         return tarjeta;
     }
 

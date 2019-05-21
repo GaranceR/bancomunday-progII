@@ -12,39 +12,38 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] arg) throws IOException, ParseException{
-
-      /**************
-       * Testing Main
-       **************/
-
-    	//Tarjeta_debito cd1=new Tarjeta_debito("CD");
-      //Tarjeta_credito tc1=new Tarjeta_credito("TC");
-
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        
+        /**************
+        * Testing Main
+        **************/
+        
     	// TEST to modify Class Banco with parameters directly
-      SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        //SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 
-      //String dateString = format.format( new Date() );
-    	Date date = format.parse("01/03/2019");
-
-    	Banco banco = new Banco(5000000, date, 300);
-      System.out.println(banco.toString());
+        //String dateString = format.format( new Date() );
+    	//Date date = format.parse("01/03/2019");
 
 
-      /*****************************
-      * TEST Get infos from archivos
-      ******************************/
+        /*****************************
+        * TEST Get infos from archivos
+        ******************************/
 
-      // Testing for the file Banco.in moved to the folder content
-      // located at the same level of the folder src
-      String url = "content/Archivos/Banco/Banco.in";
-      Archivo testArchivo = new Archivo(url);
-      testArchivo.read_from_file(url);
+        // Testing for the file Banco.in moved to the folder content
+        // located at the same level of the folder src
+        
+        Sesion session1 = new Sesion();
+        session1.Simulador();
+        
+        //String url = "content/Archivos/Banco/Banco.in";
+        //Archivo testArchivo = new Archivo(url);
+        //testArchivo.read_from_file(url);
 
 
     	// TODO TRY to change date -> Do method "NEXTDAY"
 
-    	Cliente client1 = new Cliente("1234","José Miguel Viñuela","estudiante","jmv@jaja.cl", "955555555","Jaja2","jmv",false);
-    	System.out.println(client1.toString());
+    	//Cliente client1 = new Cliente("1234","José Miguel Viñuela","estudiante","jmv@jaja.cl", "955555555","Jaja2","jmv",false);
+    	//System.out.println(client1.toString());
 
          /***********
          * Final Main
