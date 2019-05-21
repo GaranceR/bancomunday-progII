@@ -73,6 +73,8 @@ public class Archivo {
      * - de un archivo ya existente
      * - de una ruta especifica(url)
      * - y retorna una List<List<String>>
+     * 
+     * Hippo : I think that this method can be deleted
      *********************************/
 
     public List<List<String>> read_from_file(String url) throws IOException{
