@@ -49,6 +49,8 @@ public class Archivo {
 
             }catch(IOException e){
                 System.out.println("Algo salio mal :( .");
+                // Debug
+                System.out.println(e);
             }finally{
                 try{
                     if(fr != null){
@@ -56,6 +58,8 @@ public class Archivo {
                     }
                 }catch(IOException e2){
                     System.out.println("No se pudo cerrar el archivo.");
+                    // Debug
+                    System.out.println(e2);
                 }
             }
         return tarjeta;

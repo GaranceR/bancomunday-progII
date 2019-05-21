@@ -17,13 +17,13 @@ public class Carga {
     Archivo Clientes = new Archivo();
     
     public void cargarBanco(){
-        auxiliar = cuentasCD.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\JavaApplication\\content\\Archivos\\Banco\\Banco.in");
+        auxiliar = cuentasCD.leerArchivo("content/Archivos/Banco/Banco.in");
         banco.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
         banco.setFechaInicio(auxiliar.get(0).get(1));
         banco.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
     }
     public void cargarClientes(ArrayList List){
-        auxiliar = Clientes.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\JavaApplication\\content\\Archivos\\Cargas\\Clientes.in");
+        auxiliar = Clientes.leerArchivo("content/Archivos/Cargas/Clientes.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Cliente cliente_aux = new Cliente();
             cliente_aux.setRUT(auxiliar.get(i).get(0));
@@ -40,7 +40,7 @@ public class Carga {
         }
     }
     public void cargarDebito(ArrayList List){
-        auxiliar = cuentasCD.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\JavaApplication\\content\\Archivos\\Cargas\\CuentasCD.in");
+        auxiliar = cuentasCD.leerArchivo("content/ArchivosCargas/CuentasCD.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Debito tarjeta_aux = new Tarjeta_Debito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -77,7 +77,7 @@ public class Carga {
         }
     }
     public void cargarCredito(ArrayList List){
-        auxiliar = cuentasTC.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\JavaApplication\\content\\Archivos\\Cargas\\CuentasTC.in");
+        auxiliar = cuentasTC.leerArchivo("content/ArchivosCargas/CuentasTC.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Credito tarjeta_aux = new Tarjeta_Credito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -127,7 +127,7 @@ public class Carga {
         Operaciones op = new Operaciones(); 
         Archivo arc1 = new Archivo();
         ArrayList<ArrayList<String>> list1 = new ArrayList<>();
-        list1 = arc1.leerArchivo("C:\\Users\\Galda\\Desktop\\Progra 2\\bancomunday-progII\\bancomunday\\content\\Archivos\\Cargas\\Simulador.in");
+        list1 = arc1.leerArchivo("content/Archivos/Cargas/Simulador.in");
         for (int i = 1; i < list1.size(); i++) {
             System.out.println(list1.get(i));
             if ("NEXTDAY".equals(list1.get(i).get(0))){
