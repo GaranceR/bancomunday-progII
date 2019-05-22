@@ -38,15 +38,15 @@ public class Sesion {
         /****************
         // Testing Salida
         *****************/
+        
         // Creating a Salida object and passing all clientes 
-        //Salida testSalida = new Salida(clientes);
+        Salida testSalida = new Salida();
         // Creating the initial structure of directories holding the file.out
-        //testSalida.createInitialDirectoryStructure();
+        testSalida.createInitialDirectoryStructure();
         // Creating the directory structure for each clients
-        //testSalida.createDirectoryForClient(clientes);
+        testSalida.createDirectoryForClient(clientes);
         // Writing all CD files at once
-        //testSalida.salidaDebito(clientes);
-                
+        testSalida.theBigLoopOfSalida(clientes);    
         
     }
 }
