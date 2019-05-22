@@ -141,7 +141,7 @@ public class Carga {
             }
             else if ("---------------------------------------------------------------------------".equals(list1.get(i).get(0))){
             }
-            else{
+            /*else{
                 String numero = list1.get(i).get(1);
                 switch (numero){
                     case "1":
@@ -180,7 +180,7 @@ public class Carga {
                     default:
                         //Do Something
                 }
-            }
+            }*/
         }
     }
 }

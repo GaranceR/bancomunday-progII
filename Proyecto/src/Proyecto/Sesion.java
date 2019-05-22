@@ -24,8 +24,8 @@ public class Sesion {
         test1.cargarCredito(cuentasTC,cuentasTC_aux);
         System.out.println("Las CuentasCredito son: "+cuentasTC_aux);
         
-        //System.out.println("\n Las Operaciones son: ");
-        //test1.cargarSimulacion();
+        System.out.println("\n Las Operaciones son: ");
+        test1.cargarSimulacion(cuentasTC,cuentasCD,Muday);
        
         //Operaciones
         
