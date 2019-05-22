@@ -65,45 +65,6 @@ public class Archivo {
         return tarjeta;
     }
 
-
-
-    /**********************************
-     * Metodo Implementa :
-     * - Leer contenido
-     * - de un archivo ya existente
-     * - de una ruta especifica(url)
-     * - y retorna una List<List<String>>
-     * 
-     * Hippo : I think that this method can be deleted
-     *********************************/
-
-    public List<List<String>> read_from_file(String url) throws IOException{
-
-      // Initialize a List of Strings to capture content
-      List<List<String>> records = new ArrayList<>();
-
-      // Opening a BufferedReader to read the content from the file located at url
-      try (BufferedReader br = new BufferedReader(new FileReader(url))) {
-
-        String line;
-        // For each line
-        while ((line = br.readLine()) != null) {
-            String line1=null;
-          // Using a comma delimiter
-          String[] values = line.split(",");
-          records.add(Arrays.asList(values));
-        }
-      }
-      // Printing out the content of the file Banco.in
-      for (int i = 0; i < records.size(); i++) {
-        
-        System.out.println(records.get(i));
-      }
-      return records;
-    }
-
-
-
     public void escribirArchivo(String route,String[][] tarjeta) throws IOException{
 
         /**********************************

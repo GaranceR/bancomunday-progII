@@ -81,9 +81,6 @@ public class Operaciones {
     }
     
     public void Realizar_Transferencia(){
-        for (int i = 0; i < 10; i++) {
-            
-        }
     }
     
     public void Generar_Corte(){

@@ -24,15 +24,6 @@ public class Salida {
     *
     *******************************************/
 
-
-    /***********************************************
-    // Hippo -> Missing :
-    *  A class to link the Clientes to their tarjetas
-    * apparently you named this class CuentaUsario
-    * with this class I'll be able to move forward with salida
-    ***********************************************/
-
-
     public void createInitialDirectoryStructure(){
         // Create the directory structure at the mentionned path
         new File("content/Archivos/ClientesArchivos/").mkdirs();
