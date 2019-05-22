@@ -15,6 +15,11 @@ public class Sesion {
         ArrayList<ArrayList<String>> cuentasCD_aux = new ArrayList<>();
         Banco Muday = new Banco();
 
+        
+        /***************
+        // Testing Carga
+        ****************/
+        
         Carga test1 = new Carga();
         test1.cargarBanco(Muday);
         test1.cargarClientes(clientes,clientes_aux);
@@ -27,7 +32,9 @@ public class Sesion {
         //System.out.println("\n Las Operaciones son: ");
         //test1.cargarSimulacion();
        
-        //Operaciones
+        /*********************
+        // Testing Operaciones
+        **********************/
         
         Operaciones test2 = new Operaciones();
         System.out.println("El saldo antes de la operacion es: "+cuentasCD.get(0).getSaldo());
@@ -38,15 +45,15 @@ public class Sesion {
         /****************
         // Testing Salida
         *****************/
+        
         // Creating a Salida object and passing all clientes 
-        //Salida testSalida = new Salida(clientes);
+        Salida testSalida = new Salida();
         // Creating the initial structure of directories holding the file.out
-        //testSalida.createInitialDirectoryStructure();
+        testSalida.createInitialDirectoryStructure();
         // Creating the directory structure for each clients
-        //testSalida.createDirectoryForClient(clientes);
+        testSalida.createDirectoryForClient(clientes);
         // Writing all CD files at once
-        //testSalida.salidaDebito(clientes);
-                
+        testSalida.theBigLoopOfSalida(clientes);    
         
     }
 }
