@@ -7,6 +7,7 @@ package Proyecto;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Carga {
@@ -16,14 +17,14 @@ public class Carga {
     Archivo cuentasTC = new Archivo();
     Archivo Clientes = new Archivo();
     
-    public void cargarBanco(){
-        auxiliar = cuentasCD.leerArchivo("content/Archivos/Banco/Banco.in");
-        banco.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
-        banco.setFechaInicio(auxiliar.get(0).get(1));
-        banco.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
+    public void cargarBanco(Banco Muday){
+        auxiliar = cuentasCD.leerArchivo("Banco.in");
+        Muday.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
+        Muday.setFechaInicio(auxiliar.get(0).get(1));
+        Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
     }
-    public void cargarClientes(ArrayList List){
-        auxiliar = Clientes.leerArchivo("content/Archivos/Cargas/Clientes.in");
+    public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){
+        auxiliar = Clientes.leerArchivo("Clientes.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Cliente cliente_aux = new Cliente();
             cliente_aux.setRUT(auxiliar.get(i).get(0));
@@ -36,11 +37,12 @@ public class Carga {
             cliente_aux.setMorosidad(auxiliar.get(i).get(7));
             ArrayList<String> a = cliente_aux.Asignar();
             //Se añade el cliente auxiliar a la lista
-            List.add(a);
+            List.add(cliente_aux);
+            Lista_aux.add(a);
         }
     }
-    public void cargarDebito(ArrayList List){
-        auxiliar = cuentasCD.leerArchivo("content/ArchivosCargas/CuentasCD.in");
+    public void cargarDebito(ArrayList<Tarjeta_Debito> Lista, ArrayList<ArrayList<String>> Lista_aux){
+        auxiliar = cuentasCD.leerArchivo("CuentasCD.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Debito tarjeta_aux = new Tarjeta_Debito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -73,11 +75,12 @@ public class Carga {
             tarjeta_aux.setBloqueado(auxiliar.get(i).get(3));
             ArrayList<String> a = tarjeta_aux.Asignar();
             //Se añade la cuenta debito a la lista
-            List.add(a);
+            Lista.add(tarjeta_aux);
+            Lista_aux.add(a);
         }
     }
-    public void cargarCredito(ArrayList List){
-        auxiliar = cuentasTC.leerArchivo("content/ArchivosCargas/CuentasTC.in");
+    public void cargarCredito(ArrayList<Tarjeta_Credito> Lista, ArrayList<ArrayList<String>> Lista_aux){
+        auxiliar = cuentasTC.leerArchivo("CuentasTC.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Credito tarjeta_aux = new Tarjeta_Credito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -91,28 +94,28 @@ public class Carga {
                     tarjeta_aux.setCategoria("Premium");
                     tarjeta_aux.setCupoMaximo(300000);
                     tarjeta_aux.setCuotasSinInteres(0);
-                    tarjeta_aux.setInteresMensual(1.059);
+                    tarjeta_aux.setInteresMensual(5.9);
                     tarjeta_aux.setDescuento(2000);
                     break;
                 case "B":
                     tarjeta_aux.setCategoria("Cylean");
                     tarjeta_aux.setCupoMaximo(700000);
                     tarjeta_aux.setCuotasSinInteres(3);
-                    tarjeta_aux.setInteresMensual(1.042);
+                    tarjeta_aux.setInteresMensual(4.2);
                     tarjeta_aux.setDescuento(3000);
                     break;
                 case "C":
                     tarjeta_aux.setCategoria("Copper");
                     tarjeta_aux.setCupoMaximo(1000000);
                     tarjeta_aux.setCuotasSinInteres(5);
-                    tarjeta_aux.setInteresMensual(1.031);
+                    tarjeta_aux.setInteresMensual(3.1);
                     tarjeta_aux.setDescuento(2000);
                     break;
                 case "D":
                     tarjeta_aux.setCategoria("Gold");
                     tarjeta_aux.setCupoMaximo(1200000);
                     tarjeta_aux.setCuotasSinInteres(7);
-                    tarjeta_aux.setInteresMensual(1.019);
+                    tarjeta_aux.setInteresMensual(1.9);
                     tarjeta_aux.setDescuento(2000);
                     break;
                 default:
@@ -120,18 +123,20 @@ public class Carga {
             }
             ArrayList<String> a = tarjeta_aux.Asignar();
             //Se añade la cuenta credito a la lista
-            List.add(a);
+            Lista.add(tarjeta_aux);
+            Lista_aux.add(a);
+            
         }
     }
-    public void cargarSimulacion() throws IOException{
-        Operaciones op = new Operaciones(); 
+    public void cargarSimulacion(ArrayList<Tarjeta_Credito> TC,ArrayList<Tarjeta_Debito> CD,Banco Muday) throws IOException{
+        Operaciones operar = new Operaciones(); 
         Archivo arc1 = new Archivo();
         ArrayList<ArrayList<String>> list1 = new ArrayList<>();
-        list1 = arc1.leerArchivo("content/Archivos/Cargas/Simulador.in");
+        list1 = arc1.leerArchivo("Simulador.in");
         for (int i = 1; i < list1.size(); i++) {
             System.out.println(list1.get(i));
             if ("NEXTDAY".equals(list1.get(i).get(0))){
-                op.Next_Day();
+                //operar.Next_Day();
                 //Change date
             }
             else if ("---------------------------------------------------------------------------".equals(list1.get(i).get(0))){
@@ -140,31 +145,36 @@ public class Carga {
                 String numero = list1.get(i).get(1);
                 switch (numero){
                     case "1":
-                        op.Abonar();
+                        operar.Abonar(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         //Do something
                         break;
                     case "2":
-                        op.Cargar();
+                        operar.Retirar(CD,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         //Do Something
                         break;
                     case "3":
-                        op.Comprar_Pagar();
+                        if(list1.get(i).size() == 5){
+                            operar.Pagar_Compra_Cuotas(TC,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3),Integer.valueOf(list1.get(i).get(4)));
+                        }
+                        else{
+                            operar.Pagar_Compra(CD,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
+                        }
                         //Do something
                         break;
                     case "4":
-                        op.Comprar_Inversion();
+                        operar.Comprar_Inversion(CD,TC,list1.get(i).get(2),list1.get(i).get(0));
                         //Do something
                         break;
                     case "5":
-                        op.Recibir_Transferencia();
+                        operar.Recibir_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
                         //Do something
                         break;
                     case "6":
-                        op.Realizar_Transferencia();
+                        //operar.Realizar_Transferencia();
                         //Do Something
                         break;
                     case "7":
-                        op.Generar_Corte();
+                        //operar.Generar_Corte();
                         //Do something
                         break;
                     default:
