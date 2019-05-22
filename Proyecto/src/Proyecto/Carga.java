@@ -23,7 +23,7 @@ public class Carga {
         Muday.setFechaInicio(auxiliar.get(0).get(1));
         Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
     }
-    public void cargarClientes(ArrayList List){
+    public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){
         auxiliar = Clientes.leerArchivo("Clientes.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Cliente cliente_aux = new Cliente();
@@ -37,10 +37,11 @@ public class Carga {
             cliente_aux.setMorosidad(auxiliar.get(i).get(7));
             ArrayList<String> a = cliente_aux.Asignar();
             //Se añade el cliente auxiliar a la lista
-            List.add(a);
+            List.add(cliente_aux);
+            Lista_aux.add(a);
         }
     }
-    public void cargarDebito(List Lista){
+    public void cargarDebito(ArrayList<Tarjeta_Debito> Lista, ArrayList<ArrayList<String>> Lista_aux){
         auxiliar = cuentasCD.leerArchivo("CuentasCD.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Debito tarjeta_aux = new Tarjeta_Debito();
@@ -74,10 +75,11 @@ public class Carga {
             tarjeta_aux.setBloqueado(auxiliar.get(i).get(3));
             ArrayList<String> a = tarjeta_aux.Asignar();
             //Se añade la cuenta debito a la lista
-            Lista.add(a);
+            Lista.add(tarjeta_aux);
+            Lista_aux.add(a);
         }
     }
-    public void cargarCredito(ArrayList List){
+    public void cargarCredito(ArrayList<Tarjeta_Credito> Lista, ArrayList<ArrayList<String>> Lista_aux){
         auxiliar = cuentasTC.leerArchivo("CuentasTC.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Credito tarjeta_aux = new Tarjeta_Credito();
@@ -121,11 +123,13 @@ public class Carga {
             }
             ArrayList<String> a = tarjeta_aux.Asignar();
             //Se añade la cuenta credito a la lista
-            List.add(a);
+            Lista.add(tarjeta_aux);
+            Lista_aux.add(a);
+            
         }
     }
-    public void cargarSimulacion() throws IOException{
-        Operaciones op = new Operaciones(); 
+    public void cargarSimulacion(ArrayList<Tarjeta_Credito> TC,ArrayList<Tarjeta_Debito> CD,Banco Muday) throws IOException{
+        Operaciones operar = new Operaciones(); 
         Archivo arc1 = new Archivo();
         ArrayList<ArrayList<String>> list1 = new ArrayList<>();
         list1 = arc1.leerArchivo("Simulador.in");
@@ -141,31 +145,36 @@ public class Carga {
                 String numero = list1.get(i).get(1);
                 switch (numero){
                     case "1":
-                        //op.Abonar();
+                        operar.Abonar(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         //Do something
                         break;
                     case "2":
-                        //op.Cargar();
+                        operar.Retirar(CD,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         //Do Something
                         break;
                     case "3":
-                        //op.Comprar_Pagar();
+                        if(list1.get(i).size() == 5){
+                            operar.Pagar_Compra_Cuotas(TC,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3),Integer.valueOf(list1.get(i).get(4)));
+                        }
+                        else{
+                            operar.Pagar_Compra(CD,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
+                        }
                         //Do something
                         break;
                     case "4":
-                        //op.Comprar_Inversion();
+                        operar.Comprar_Inversion(CD,TC,list1.get(i).get(2),list1.get(i).get(0));
                         //Do something
                         break;
                     case "5":
-                        //op.Recibir_Transferencia();
+                        operar.Recibir_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
                         //Do something
                         break;
                     case "6":
-                        //op.Realizar_Transferencia();
+                        //operar.Realizar_Transferencia();
                         //Do Something
                         break;
                     case "7":
-                        //op.Generar_Corte();
+                        //operar.Generar_Corte();
                         //Do something
                         break;
                     default:
