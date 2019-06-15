@@ -12,9 +12,11 @@ public class Main {
         /**************
         * Testing Main
         **************/
-        
+        Vista vista=new Vista();
         Sesion session1 = new Sesion();
-        session1.Simulador();
+        Controlador cont=new Controlador(vista,session1);
+        cont.iniciarVista();
+        //session1.Simulador();
         
         /***********
         * Final Main
