@@ -5,14 +5,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Sesion {
-    public void Simulador() throws IOException{
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<ArrayList<String>> clientes_aux = new ArrayList<>();
+    private ArrayList<Tarjeta_Credito> cuentasTC = new ArrayList<>();
+    private ArrayList<ArrayList<String>> cuentasTC_aux = new ArrayList<>();
+    private ArrayList<Tarjeta_Debito> cuentasCD = new ArrayList<>();
+    private ArrayList<ArrayList<String>> cuentasCD_aux = new ArrayList<>();
+    private Banco Muday=new Banco();
+    private Carga c=new Carga();
+    public void Cargar(){
+        Muday=c.cargarBanco(Muday);
+        c.cargarClientes(clientes,clientes_aux);
+        c.cargarDebito(cuentasCD,cuentasCD_aux);
+        c.cargarCredito(cuentasTC,cuentasTC_aux);
         
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        ArrayList<ArrayList<String>> clientes_aux = new ArrayList<>();
-        ArrayList<Tarjeta_Credito> cuentasTC = new ArrayList<>();
-        ArrayList<ArrayList<String>> cuentasTC_aux = new ArrayList<>();
-        ArrayList<Tarjeta_Debito> cuentasCD = new ArrayList<>();
-        ArrayList<ArrayList<String>> cuentasCD_aux = new ArrayList<>();
+    }
+    
+    /*public void Simulador() throws IOException{
+        
         Banco Muday = new Banco();
 
         Carga test1 = new Carga();
@@ -48,5 +58,5 @@ public class Sesion {
         //testSalida.salidaDebito(clientes);
                 
         
-    }
+    //}
 }

@@ -17,11 +17,12 @@ public class Carga {
     Archivo cuentasTC = new Archivo();
     Archivo Clientes = new Archivo();
     
-    public void cargarBanco(Banco Muday){
+    public Banco cargarBanco(Banco Muday){
         auxiliar = cuentasCD.leerArchivo("Banco.in");
         Muday.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
         Muday.setFechaInicio(auxiliar.get(0).get(1));
         Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
+        return Muday;
     }
     public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){
         auxiliar = Clientes.leerArchivo("Clientes.in");
