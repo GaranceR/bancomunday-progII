@@ -13,7 +13,7 @@ public class Main {
         * Testing Main
         **************/
         //ArrayList<Cliente> clientes = new ArrayList<>();
-        Vista vista=new Vista();
+        Vista vista=new Vista(0);
         Sesion session1 = new Sesion();
         session1.Cargar();
         Controlador cont=new Controlador(vista,session1);
