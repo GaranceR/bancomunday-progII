@@ -13,6 +13,32 @@ public class Sesion {
     private ArrayList<ArrayList<String>> cuentasCD_aux = new ArrayList<>();
     private Banco Muday=new Banco();
     private Carga c=new Carga();
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+    public Banco getMuday(){
+        return Muday;
+    }
+    public ArrayList<ArrayList<String>> getClientes_aux() {
+        return clientes_aux;
+    }
+
+    public ArrayList<Tarjeta_Credito> getCuentasTC() {
+        return cuentasTC;
+    }
+
+    public ArrayList<ArrayList<String>> getCuentasTC_aux() {
+        return cuentasTC_aux;
+    }
+
+    public ArrayList<Tarjeta_Debito> getCuentasCD() {
+        return cuentasCD;
+    }
+
+    public ArrayList<ArrayList<String>> getCuentasCD_aux() {
+        return cuentasCD_aux;
+    }
+    
     public void Cargar(){
         Muday=c.cargarBanco(Muday);
         c.cargarClientes(clientes,clientes_aux);
@@ -21,17 +47,12 @@ public class Sesion {
         
     }
     
-    /*public void Simulador() throws IOException{
+    public void Simulador() throws IOException{
         
         Banco Muday = new Banco();
 
-        Carga test1 = new Carga();
-        test1.cargarBanco(Muday);
-        test1.cargarClientes(clientes,clientes_aux);
         System.out.println("Los Clientes son: "+clientes);
-        test1.cargarDebito(cuentasCD,cuentasCD_aux);
         System.out.println("Las CuentasDebito son: "+cuentasCD_aux);
-        test1.cargarCredito(cuentasTC,cuentasTC_aux);
         System.out.println("Las CuentasCredito son: "+cuentasTC_aux);
         
         //System.out.println("\n Las Operaciones son: ");
@@ -58,5 +79,5 @@ public class Sesion {
         //testSalida.salidaDebito(clientes);
                 
         
-    //}
+    }
 }

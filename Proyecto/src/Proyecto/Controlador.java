@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.awt.event.*;
+import java.io.IOException;
 import javax.swing.*;
 
 public class Controlador implements ActionListener {
@@ -9,16 +10,10 @@ public class Controlador implements ActionListener {
     private JLabel label;
     private JTextField texto;
     private JButton boton;
-    public Controlador(Vista v, Sesion s) {
+    public Controlador(Sesion s,Vista v) {
         this.v = v;
         this.S = s;
         for(JButton x:this.v.botones){
-            x.addActionListener(this);
-        }
-    }
-    public Controlador(Vista aux){
-        this.aux=aux;
-        for(JButton x:this.aux.botones){
             x.addActionListener(this);
         }
     }
@@ -32,6 +27,7 @@ public class Controlador implements ActionListener {
        a.setTitle("Banco Munday");
        a.pack();
        a.setSize(600,300);
+       a.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        a.setVisible(true); 
     }
     @Override
@@ -39,88 +35,69 @@ public class Controlador implements ActionListener {
         //Abonar
         if(v.botones.get(0)==evento.getSource()){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(1));
+                aux=new Vista(1);
+                iniciarVista(aux);
+                ControladorAbonar op=new ControladorAbonar(S,aux);
+                if(aux.getValido()==1){
+                    v.l.setText("  Exito...");
+                    v.tf[0].setText("Sin error");
+                }
+                else if(aux.getValido()==0){
+                    v.l.setText("  Error...");
+                    v.tf[0].setText("");
+                }
             }
         }
         //Retirar
         else if((v.botones.get(1)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(2));
+                aux=new Vista(2);
+                iniciarVista(aux);
+                ControladorRetirar op=new ControladorRetirar(S,aux);
             }
         }
         //Compar/Pagar
         else if((v.botones.get(2)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(3));
+                aux=new Vista(3);
+                iniciarVista(aux);
             }
         }
         //Comprar invercion
         else if((v.botones.get(3)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(4));
+                aux=new Vista(4);
+                iniciarVista(aux);
             }
         }
         //Recibir transferencia
         else if((v.botones.get(4)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(5));
+                aux=new Vista(5);
+                iniciarVista(aux);
             }
         }
         //Realizar transferencia
         else if((v.botones.get(5)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(6));
+                aux=new Vista(6);
+                iniciarVista(aux);
             }
         }
         //Generar corte
         else if((v.botones.get(6)==evento.getSource())){
             if(this.v.getVentana()==0){
-                iniciarVista(new Vista(7));
+                aux=new Vista(7);
+                iniciarVista(aux);
             }
         }
         //Simulacion
         else if((v.botones.get(7)==evento.getSource())){
-            System.out.println("wasedrtfgyhujik");
-        }
-        if(aux!=null){
-            //Abonar
-            if(aux.botones.get(0)==evento.getSource()){
-                System.out.println("asd");
-            }
-            //Retirar
-            else if((aux.botones.get(1)==evento.getSource())){
-                System.out.println("as");
-            }
-            //Compar/Pagar
-            else if((aux.botones.get(2)==evento.getSource())){
-                System.out.println("sd");
-            }
-            //Comprar invercion
-            else if((aux.botones.get(3)==evento.getSource())){
-                System.out.println("ad");
-            }
-            //Recibir transferencia
-            else if((aux.botones.get(4)==evento.getSource())){
-                System.out.println("456323");
-            }
-            //Realizar transferencia
-            else if((aux.botones.get(5)==evento.getSource())){
-                System.out.println("0123123");
-            }
-            //Generar corte
-            else if((aux.botones.get(6)==evento.getSource())){
-                System.out.println("98745623");
-            }
-            //Simulacion
-            else if((aux.botones.get(7)==evento.getSource())){
-                System.out.println("wasedrtfgyhujik");
+            try {
+                S.Simulador();
+            } catch (IOException ex) {
+                //Mensaje de alerta
             }
         }
-    }
-    public void Accion(){
-        
-    }
-    public void Condicion(){
-        
     }
 }

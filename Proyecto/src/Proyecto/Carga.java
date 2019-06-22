@@ -171,7 +171,7 @@ public class Carga {
                         //Do something
                         break;
                     case "6":
-                        //operar.Realizar_Transferencia();
+                        operar.Realizar_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
                         //Do Something
                         break;
                     case "7":

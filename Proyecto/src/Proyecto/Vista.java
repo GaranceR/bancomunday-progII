@@ -8,9 +8,18 @@ public class Vista extends JFrame {
     public JTextField[] tf=new JTextField[3];
     public JLabel l;
     private JPanel p1,p2,p3;
-    private int ventana;
+    private int ventana,valido=230;
     public int getVentana() {
         return ventana;
+    }
+    public int getValido(){
+        return valido;
+    }
+    public void setValido(int val){
+        valido=val;
+    }
+    public JTextField[] getTf(){
+        return tf;
     }
     private String[] OP={"Abonar","Cargar","Comprar/Pagar","Comprar inversion","Recivir Transferencia","Realizar Transferencia","Generar Corte","Simulacion"};
     public Vista(int a){
@@ -68,16 +77,13 @@ public class Vista extends JFrame {
         getContentPane().setLayout(new BorderLayout());
         p1=new JPanel();p2=new JPanel();
         String[] a={"Regresar","Continuar"};
-        tf[0]=new JTextField("Cuenta de origen");
-        tf[1]=new JTextField("Cuenta de destino");
-        tf[2]=new JTextField("Monto");
+        tf[0]=new JTextField("Cuenta");
+        tf[1]=new JTextField("Monto");
         tf[0].setPreferredSize(new Dimension(10,100));
         tf[1].setPreferredSize(new Dimension(10,100));
-        tf[2].setPreferredSize(new Dimension(10,100));
         p1.setLayout(new GridLayout(1,3));
         p1.add(tf[0]);
         p1.add(tf[1]);
-        p1.add(tf[2]);
         add(p1, BorderLayout.NORTH);
         for(int x=0;x<2;x++){
             b=new JButton(a[x]);

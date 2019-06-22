@@ -16,7 +16,7 @@ public class Main {
         Vista vista=new Vista(0);
         Sesion session1 = new Sesion();
         session1.Cargar();
-        Controlador cont=new Controlador(vista,session1);
+        Controlador cont=new Controlador(session1,vista);
         cont.iniciarVista();
         //session1.Simulador();
         

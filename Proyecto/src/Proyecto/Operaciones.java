@@ -105,10 +105,14 @@ public class Operaciones {
         }
     }
     
-    public boolean Realizar_Transferencia(){
+    public boolean Realizar_Transferencia(ArrayList<Tarjeta_Debito> TarjetaDB, String Valor, String NumeroCuenta, Banco Muday){
         try{
-            for (int i = 0; i < 10; i++) {
-
+            Integer montoInt = Integer.valueOf(Valor);
+            for (int i = 0; i < TarjetaDB.size(); i++) {
+                if ((TarjetaDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                    TarjetaDB.get(i).setSaldo(TarjetaDB.get(i).getSaldo()-montoInt);
+                    Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
+                }
             }
             return true;
         }catch(Exception ex){
