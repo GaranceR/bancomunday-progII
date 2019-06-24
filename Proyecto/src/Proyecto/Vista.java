@@ -124,9 +124,9 @@ public class Vista extends JFrame {
     public void crearComPag(){
         getContentPane().setLayout(new BorderLayout());
         p1=new JPanel();p2=new JPanel();
-        String[] a={"Regresar","Pagar","Comprar"},c={"Cuenta","Monto","Descripcion"};
-        p1.setLayout(new GridLayout(1,3));
-        for(int x=0;x<3;x++){
+        String[] a={"Regresar","Pagar/Comprar"},c={"Cuenta","Monto","Descripcion"};
+        p1.setLayout(new GridLayout(1,2));
+        for(int x=0;x<2;x++){
             b=new JButton(a[x]);
             botones.add(b);
         }
