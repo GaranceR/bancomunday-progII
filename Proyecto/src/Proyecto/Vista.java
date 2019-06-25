@@ -8,18 +8,12 @@ public class Vista extends JFrame {
     public JTextField[] tf=new JTextField[3];
     public JLabel l;
     private JPanel p1,p2,p3;
-    private int ventana,valido=230;
-    public int getVentana() {
-        return ventana;
-    }
+    private int valido=230;
     public int getValido(){
         return valido;
     }
     public void setValido(int val){
         valido=val;
-    }
-    public JTextField[] getTf(){
-        return tf;
     }
     private String[] OP={"Abonar","Cargar","Comprar/Pagar","Comprar inversion","Recivir Transferencia","Realizar Transferencia","Generar Corte","Simulacion"};
     public Vista(int a){
@@ -41,9 +35,6 @@ public class Vista extends JFrame {
                 break;
             case 6:
                 crearRecTrans();
-                break;
-            case 7:
-                crearGenCort();
                 break;
             default:
                 crearP();
@@ -71,7 +62,6 @@ public class Vista extends JFrame {
         p2.add(tf[0]);
         add(p1, BorderLayout.WEST);
         add(p2, BorderLayout.CENTER);
-        ventana=0;
     }
     public void crearAbonar(){
         getContentPane().setLayout(new BorderLayout());
@@ -95,7 +85,6 @@ public class Vista extends JFrame {
             p2.add(x);
         }
         add(p2, BorderLayout.SOUTH);
-        ventana=1;
     }
     public void crearRetirar(){
         getContentPane().setLayout(new BorderLayout());
@@ -119,7 +108,6 @@ public class Vista extends JFrame {
             p2.add(x);
         }
         add(p2, BorderLayout.SOUTH);
-        ventana=2;
     }
     public void crearComPag(){
         getContentPane().setLayout(new BorderLayout());
@@ -143,7 +131,6 @@ public class Vista extends JFrame {
             p2.add(x);
         }
         add(p2, BorderLayout.NORTH);
-        ventana=3;
     }
     public void crearComInv(){
         getContentPane().setLayout(new BorderLayout());
@@ -165,7 +152,6 @@ public class Vista extends JFrame {
             p2.add(tf[x]);
         }
         add(p2, BorderLayout.NORTH);
-        ventana=4;
     }
     public void crearReaTrans(){
         getContentPane().setLayout(new BorderLayout());
@@ -187,7 +173,6 @@ public class Vista extends JFrame {
             p2.add(tf[x]);
         }
         add(p2, BorderLayout.NORTH);
-        ventana=5;
     }
     public void crearRecTrans(){
         getContentPane().setLayout(new BorderLayout());
@@ -209,12 +194,5 @@ public class Vista extends JFrame {
             p2.add(tf[x]);
         }
         add(p2, BorderLayout.NORTH);
-        ventana=6;
-    }
-    public void crearGenCort(){
-        getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();p2=new JPanel();
-        
-        ventana=7;
     }
 }

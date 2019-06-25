@@ -32,9 +32,9 @@ public class Controlador implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent evento){
+        S.Cargar();
         //Abonar
         if(v.botones.get(0)==evento.getSource()){
-            if(this.v.getVentana()==0){
                 aux=new Vista(1);
                 iniciarVista(aux);
                 ControladorAbonar op=new ControladorAbonar(S,aux);
@@ -46,11 +46,9 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
         }
         //Retirar
         else if((v.botones.get(1)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(2);
                 iniciarVista(aux);
                 ControladorRetirar op=new ControladorRetirar(S,aux);
@@ -62,19 +60,16 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
         }
         //Compar/Pagar
         else if((v.botones.get(2)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(3);
                 iniciarVista(aux);
                 ControladorComPag op=new ControladorComPag(S,aux);
-            }
+            
         }
         //Comprar invercion
         else if((v.botones.get(3)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(4);
                 iniciarVista(aux);
                 ControladorComInv op=new ControladorComInv(S,aux);
@@ -86,11 +81,10 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
+            
         }
         //Recibir transferencia
         else if((v.botones.get(4)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(5);
                 iniciarVista(aux);
                 ControladorReaTrans op=new ControladorReaTrans(S,aux);
@@ -102,11 +96,10 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
+            
         }
         //Realizar transferencia
         else if((v.botones.get(5)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(6);
                 iniciarVista(aux);
                 ControladorRecTrans op=new ControladorRecTrans(S,aux);
@@ -118,11 +111,10 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
+            
         }
         //Generar corte
         else if((v.botones.get(6)==evento.getSource())){
-            if(this.v.getVentana()==0){
                 aux=new Vista(7);
                 iniciarVista(aux);
                 ControladorGenCort op=new ControladorGenCort(S,aux);
@@ -134,7 +126,7 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            }
+            
         }
         //Simulacion
         else if((v.botones.get(7)==evento.getSource())){

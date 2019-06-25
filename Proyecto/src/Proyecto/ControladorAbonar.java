@@ -18,10 +18,9 @@ public class ControladorAbonar implements ActionListener {
             V.dispose();
         }
         else if(V.botones.get(1)==arg0.getSource()){
-            JTextField[] texto=V.getTf();
-            String[] datos=new String[3];
-            for(int x=0;x<3;x++){
-                datos[x]=texto[x].getText();
+            String[] datos=new String[2];
+            for(int x=0;x<2;x++){
+                datos[x]=V.tf[x].getText();
             }
             if(op.Abonar(S.getCuentasCD(),S.getCuentasTC() , S.getMuday(), datos[1], datos[0])){
                 V.setValido(1);
