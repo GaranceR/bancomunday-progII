@@ -45,7 +45,7 @@ public class Operaciones {
         }
     }
     
-    public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB,Banco Muday,String Valor,String NumeroCuenta,String Descripcion){
+    public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB,ArrayList<Tarjeta_Credito> TarjetasTC,Banco Muday,String Valor,String NumeroCuenta,String Descripcion){
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -54,6 +54,12 @@ public class Operaciones {
                         TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()-montoInt);
                         Muday.setPatrimonio(Muday.getPatrimonio()-montoInt);
                     }
+                }
+            }
+            for (int i = 0; i < TarjetasTC.size(); i++) {
+                if((TarjetasTC.get(i).getNumeroCuenta().equals(NumeroCuenta))){
+                    TarjetasTC.get(0).setDeuda(TarjetasTC.get(i).getDeuda()-montoInt);
+                    Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
                 }
             }
             return true;

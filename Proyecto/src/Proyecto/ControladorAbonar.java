@@ -1,5 +1,6 @@
 package Proyecto;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 public class ControladorAbonar implements ActionListener {
     private Vista V;
@@ -18,17 +19,27 @@ public class ControladorAbonar implements ActionListener {
             V.dispose();
         }
         else if(V.botones.get(1)==arg0.getSource()){
-            String[] datos=new String[2];
-            for(int x=0;x<2;x++){
-                datos[x]=V.tf[x].getText();
-            }
-            if(op.Abonar(S.getCuentasCD(),S.getCuentasTC() , S.getMuday(), datos[1], datos[0])){
-                V.setValido(1);
-                V.dispose();
-            }
-            else{
-                V.setValido(0);
-                V.dispose();
+            if("Cuenta".equals(V.tf[0].getText()) && "Monto".equals(V.tf[1].getText())){
+            } else {
+                try{
+                    int z=0;
+                    String[] datos=new String[3];
+                    for(JTextField x:V.tf){
+                        datos[z]=x.getText();
+                        z++;
+                    }
+                    if(op.Abonar(S.getCuentasCD(),S.getCuentasTC() ,S.getMuday(), datos[1], datos[0])){
+                        //Enviar a archivos
+                        V.setValido(1);
+                        V.dispose();
+                    }
+                    else{
+                        V.setValido(0);
+                        V.dispose();
+                    }
+                }catch(Exception e){
+                    //System.out.println(e);
+                }
             }
         }
     }

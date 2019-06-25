@@ -13,6 +13,7 @@ public class Controlador implements ActionListener {
     public Controlador(Sesion s,Vista v) {
         this.v = v;
         this.S = s;
+        S.Cargar();
         for(JButton x:this.v.botones){
             x.addActionListener(this);
         }
@@ -22,12 +23,14 @@ public class Controlador implements ActionListener {
        v.pack();
        v.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        v.setSize(600,300);
+       v.setLocationRelativeTo(null);
        v.setVisible(true); 
     }public void iniciarVista(Vista a) {
        a.setTitle("Banco Munday");
        a.pack();
        a.setSize(600,300);
        a.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       a.setLocationRelativeTo(null);
        a.setVisible(true); 
     }
     @Override
@@ -115,17 +118,6 @@ public class Controlador implements ActionListener {
         }
         //Generar corte
         else if((v.botones.get(6)==evento.getSource())){
-                aux=new Vista(7);
-                iniciarVista(aux);
-                ControladorGenCort op=new ControladorGenCort(S,aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.tf[0].setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.tf[0].setText("");
-                }
             
         }
         //Simulacion

@@ -19,7 +19,28 @@ public class ControladorComPag implements ActionListener {
             V.dispose();
         }
         else if(V.botones.get(1)==arg0.getSource()){
-            //Boton de compra/pago
+            if("Cuenta".equals(V.tf[0].getText()) && "Monto".equals(V.tf[1].getText())){
+            }else{
+                try{
+                    int z=0;
+                    String[] datos=new String[3];
+                    for(JTextField x:V.tf){
+                        datos[z]=x.getText();
+                        z++;
+                    }
+                    if(op.Pagar_Compra(S.getCuentasCD(), S.getCuentasTC(), S.getMuday(), datos[1], datos[0],datos[2])){
+                        //Enviar a archivos
+                        V.setValido(1);
+                        V.dispose();
+                    }
+                    else{
+                        V.setValido(0);
+                        V.dispose();
+                    }
+                }catch(Exception e){
+                    
+                }
+            }
         }
     }
     
