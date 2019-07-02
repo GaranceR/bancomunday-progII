@@ -18,10 +18,10 @@ public class Carga {
     Archivo Clientes = new Archivo();
     
     public Banco cargarBanco(Banco Muday){
-        auxiliar = cuentasCD.leerArchivo("Banco.in");
+        auxiliar = cuentasCD.leerArchivo("Banco.in"); 	// G : Por qué cuentasCD en banco?
         Muday.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
         Muday.setFechaInicio(auxiliar.get(0).get(1));
-        Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0)));
+        Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0))); // G : debería ser get(0).get(2) cierto? TO TEST
         return Muday;
     }
     public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){
@@ -47,7 +47,7 @@ public class Carga {
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Debito tarjeta_aux = new Tarjeta_Debito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
-            tarjeta_aux.setCategoria(auxiliar.get(i).get(1));
+            tarjeta_aux.setCategoria(auxiliar.get(i).get(1));	 // G : Eso no sirve?
             tarjeta_aux.setSaldo(Integer.valueOf(auxiliar.get(i).get(2)));
             if (null != auxiliar.get(i).get(1)) switch (auxiliar.get(i).get(1)) {
                 case "A":
@@ -85,7 +85,7 @@ public class Carga {
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Credito tarjeta_aux = new Tarjeta_Credito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
-            tarjeta_aux.setCategoria(auxiliar.get(i).get(1));
+            tarjeta_aux.setCategoria(auxiliar.get(i).get(1)); // G : Eso no sirve?
             tarjeta_aux.setMontoDisponible(Integer.valueOf(auxiliar.get(i).get(2)));
             tarjeta_aux.setDiaPago(auxiliar.get(i).get(3));
             tarjeta_aux.setBloqueado(auxiliar.get(i).get(4));
@@ -110,14 +110,14 @@ public class Carga {
                     tarjeta_aux.setCupoMaximo(1000000);
                     tarjeta_aux.setCuotasSinInteres(5);
                     tarjeta_aux.setInteresMensual(3.1);
-                    tarjeta_aux.setDescuento(2000);
+                    tarjeta_aux.setDescuento(4000);
                     break;
                 case "D":
                     tarjeta_aux.setCategoria("Gold");
                     tarjeta_aux.setCupoMaximo(1200000);
                     tarjeta_aux.setCuotasSinInteres(7);
                     tarjeta_aux.setInteresMensual(1.9);
-                    tarjeta_aux.setDescuento(2000);
+                    tarjeta_aux.setDescuento(5000);
                     break;
                 default:
                     break;
@@ -141,17 +141,16 @@ public class Carga {
                 //Change date
             }
             else if ("---------------------------------------------------------------------------".equals(list1.get(i).get(0))){
+            	// Do nothing
             }
             else{
                 String numero = list1.get(i).get(1);
                 switch (numero){
                     case "1":
                         operar.Abonar(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0));
-                        //Do something
                         break;
                     case "2":
                         operar.Retirar(CD,Muday,list1.get(i).get(2),list1.get(i).get(0));
-                        //Do Something
                         break;
                     case "3":
                         if(list1.get(i).size() == 5){
@@ -159,27 +158,22 @@ public class Carga {
                         }
                         else{
                             operar.Pagar_Compra(CD,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
+                            // G : falta secundo argumento List Tarjetas TC
                         }
-                        //Do something
                         break;
                     case "4":
                         operar.Comprar_Inversion(CD,TC,list1.get(i).get(2),list1.get(i).get(0));
-                        //Do something
                         break;
                     case "5":
                         operar.Recibir_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
-                        //Do something
                         break;
                     case "6":
                         operar.Realizar_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
-                        //Do Something
                         break;
                     case "7":
                         //operar.Generar_Corte();
-                        //Do something
                         break;
                     default:
-                        //Do Something
                 }
             }
         }

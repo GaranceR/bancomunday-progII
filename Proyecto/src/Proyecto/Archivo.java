@@ -41,7 +41,7 @@ public class Archivo {
                     String[] linea = texto.replace(";","").replace(" ","").split(",");
                     for (int j = 0; j < linea.length; j++) {
                         aux.add(linea[j]);
-                        clon =(ArrayList<String>) aux.clone();
+                        clon = (ArrayList<String>) aux.clone();
                     }
                     tarjeta.add(clon);
                     aux.clear();
@@ -96,7 +96,6 @@ public class Archivo {
       }
       // Printing out the content of the file Banco.in
       for (int i = 0; i < records.size(); i++) {
-        
         System.out.println(records.get(i));
       }
       return records;
@@ -104,7 +103,7 @@ public class Archivo {
 
 
 
-    public void escribirArchivo(String route,String[][] tarjeta) throws IOException{
+    public void escribirArchivo(String route, String[][] tarjeta) throws IOException{
 
         /**********************************
          * Method implementing :

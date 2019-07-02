@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cliente {
     
     /*************************************************
-    * Clase para implementar el conepto de Clientes
+    * Clase para implementar el concepto de Clientes
     * y metodos relacionados como los getters & setters para: 
     * - RUT, nombre, ocupacion, correo, 
     * - telefono, nombreUsuario, contrasena, morosidad
@@ -19,8 +19,6 @@ public class Cliente {
 	private String ocupacion;
 	private String correo;
 	private String telefono;
-	
-	
 	private String nombreUsuario;
 	private String contrasena;
 	private String morosidad;
@@ -67,27 +65,26 @@ public class Cliente {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+    public String getMorosidad() {
+        return morosidad;
+    }
+    public void setMorosidad(String morosidad) {
+        this.morosidad = morosidad;
+    }
 
-        public String getMorosidad() {
-            return morosidad;
-        }
-
-        public void setMorosidad(String morosidad) {
-            this.morosidad = morosidad;
-        }
-	
-        public ArrayList<String> Asignar(){
-            ArrayList<String> asig = new ArrayList<>();
-            asig.add(RUT);
-            asig.add(nombre);
-            asig.add(ocupacion);
-            asig.add(correo);
-            asig.add(telefono);
-            asig.add(nombreUsuario);
-            asig.add(contrasena);
-            asig.add(morosidad);
-            return asig;
-        }
+    public ArrayList<String> Asignar(){
+        ArrayList<String> asig = new ArrayList<>();
+        asig.add(RUT);
+        asig.add(nombre);
+        asig.add(ocupacion);
+        asig.add(correo);
+        asig.add(telefono);
+        asig.add(nombreUsuario);
+        asig.add(contrasena);
+        asig.add(morosidad);
+        return asig;
+    }
+    
 	@Override
 	public String toString() {
 		return "Cliente RUT : " + this.RUT + " Nombre : " + this.nombre + " Ocupacion : " + this.ocupacion
