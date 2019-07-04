@@ -55,7 +55,7 @@ public class Salida {
 
         // Used to get the current date - to be improved..
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
-	LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.now();
         String formated_date = dtf.format(localDate);
         
         // Creating an iterator to loop over the ListOfClientes
@@ -88,9 +88,9 @@ public class Salida {
     }
     
     public void salidaCredito(ArrayList ListOfClientes){
-// Used to get the current date - to be improved..
+    // Used to get the current date - to be improved..
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
-	LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.now();
         String formated_date = dtf.format(localDate);
         
         // Creating an iterator to loop over the ListOfClientes

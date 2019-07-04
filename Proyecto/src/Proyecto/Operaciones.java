@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Operaciones {
 
-    public boolean Abonar(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasCD,Banco Muday,String Valor,String NumeroCuenta){
+    public boolean Abonar(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasCD, Banco Muday, String Valor, String NumeroCuenta){
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -30,7 +30,7 @@ public class Operaciones {
         }
         
     }
-    public boolean Retirar(ArrayList<Tarjeta_Debito> TarjetasDB,Banco Muday,String Valor,String NumeroCuenta){
+    public boolean Retirar(ArrayList<Tarjeta_Debito> TarjetasDB, Banco Muday, String Valor, String NumeroCuenta){
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -45,7 +45,11 @@ public class Operaciones {
         }
     }
     
+<<<<<<< HEAD
     public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB,Banco Muday,String Valor,String NumeroCuenta,String Descripcion){
+=======
+    public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasTC, Banco Muday, String Valor, String NumeroCuenta, String Descripcion){
+>>>>>>> 443d04ee5702671ba19b50dddf503d91c8bce402
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -61,6 +65,7 @@ public class Operaciones {
             return false;
         }
     }
+<<<<<<< HEAD
     public boolean Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasCD,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
         try{
             Integer monto=Integer.parseInt(Valor);
@@ -85,10 +90,15 @@ public class Operaciones {
             return true;
         }catch(Exception ex){
             return false;
+=======
+    public void Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasTC,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
+        for (int i = 0; i < TarjetasTC.size(); i++) {
+            //Metodo para la compra de cuotas pendiente
+>>>>>>> 443d04ee5702671ba19b50dddf503d91c8bce402
         }
     }
     
-    public boolean Comprar_Inversion(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasCD,String Valor,String NumeroCuenta){
+    public boolean Comprar_Inversion(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasTC,String Valor,String NumeroCuenta){
         try{    
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -98,10 +108,10 @@ public class Operaciones {
                     }
                 }
             }
-            for (int i = 0; i < TarjetasCD.size(); i++) {
-                if((TarjetasCD.get(i).getNumeroCuenta()).equals(NumeroCuenta)){
-                    if (TarjetasCD.get(i).getMontoDisponible()>0){
-                        TarjetasCD.get(i).setMontoDisponible(TarjetasCD.get(i).getMontoDisponible()-montoInt);
+            for (int i = 0; i < TarjetasTC.size(); i++) {
+                if((TarjetasTC.get(i).getNumeroCuenta()).equals(NumeroCuenta)){
+                    if (TarjetasTC.get(i).getMontoDisponible()>0){
+                    	TarjetasTC.get(i).setMontoDisponible(TarjetasTC.get(i).getMontoDisponible()-montoInt);
                     }
                 }
             }
@@ -111,7 +121,7 @@ public class Operaciones {
         }
     }
     
-    public boolean Recibir_Transferencia(ArrayList<Tarjeta_Debito> TarjetasDB,String Valor,String NumeroCuenta,Banco Muday){
+    public boolean Recibir_Transferencia(ArrayList<Tarjeta_Debito> TarjetasDB, String Valor, String NumeroCuenta, Banco Muday){
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {

@@ -54,6 +54,7 @@ public class Tarjeta_Debito {
         this.descuento = descuento;
     }
     
+    
     public ArrayList<String> Asignar(){
             ArrayList<String> asig = new ArrayList<>();
             asig.add(numeroCuenta);

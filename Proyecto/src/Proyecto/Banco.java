@@ -1,6 +1,5 @@
 package Proyecto;
 
-import java.util.Date;
 
 public class Banco {
     

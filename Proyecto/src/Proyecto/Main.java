@@ -7,7 +7,6 @@ public class Main {
 
     public static void main(String[] arg) throws IOException, ParseException{
         
-//<<<<<<< HEAD
         /**************
         * Testing Main
         **************/
@@ -18,17 +17,14 @@ public class Main {
         cont.iniciarVista();
         //session1.Simulador();
         
+        System.out.println("Holi is this working");
+        
         /***********
         * Final Main
         ************/
 
-         // Almost there ! (:
-//=======
-        //ArrayList<Cliente> clientes = new ArrayList<>();
-        
-        //Sesion session1 = new Sesion();
-        //session1.Simulador();
-//>>>>>>> 2213a369d0fd078f4f42d32d5897787d8c931669
+        // Almost there ! (:
+
 
     }
 }
