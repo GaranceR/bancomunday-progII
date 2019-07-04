@@ -19,13 +19,15 @@ public class ControladorAbonar implements ActionListener {
             V.dispose();
         }
         else if(V.botones.get(1)==arg0.getSource()){
-            if("Cuenta".equals(V.tf[0].getText()) && "Monto".equals(V.tf[1].getText())){
+            if(V.textos.get(0).getText().equals("Cuenta") && V.textos.get(1).getText().equals("Monto")){
             } else {
                 try{
                     int z=0;
-                    String[] datos=new String[3];
-                    for(JTextField x:V.tf){
-                        datos[z]=x.getText();
+                    String[] datos=new String[V.textos.size()];
+                    String dato;
+                    for(JTextField x:V.textos){
+                        dato=x.getText();
+                        datos[z]=dato;
                         z++;
                     }
                     if(op.Abonar(S.getCuentasCD(),S.getCuentasTC() ,S.getMuday(), datos[1], datos[0])){
@@ -38,7 +40,7 @@ public class ControladorAbonar implements ActionListener {
                         V.dispose();
                     }
                 }catch(Exception e){
-                    //System.out.println(e);
+                    System.out.println(e);
                 }
             }
         }

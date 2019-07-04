@@ -1,7 +1,6 @@
 package Proyecto;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.text.ParseException;
 
 public class Main {
@@ -15,7 +14,6 @@ public class Main {
         //ArrayList<Cliente> clientes = new ArrayList<>();
         Vista vista=new Vista(0);
         Sesion session1 = new Sesion();
-        //session1.Cargar();
         Controlador cont=new Controlador(session1,vista);
         cont.iniciarVista();
         //session1.Simulador();

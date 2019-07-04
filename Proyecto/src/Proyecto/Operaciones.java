@@ -45,7 +45,7 @@ public class Operaciones {
         }
     }
     
-    public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB,ArrayList<Tarjeta_Credito> TarjetasTC,Banco Muday,String Valor,String NumeroCuenta,String Descripcion){
+    public boolean Pagar_Compra(ArrayList<Tarjeta_Debito> TarjetasDB,Banco Muday,String Valor,String NumeroCuenta,String Descripcion){
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
@@ -56,20 +56,35 @@ public class Operaciones {
                     }
                 }
             }
-            for (int i = 0; i < TarjetasTC.size(); i++) {
-                if((TarjetasTC.get(i).getNumeroCuenta().equals(NumeroCuenta))){
-                    TarjetasTC.get(0).setDeuda(TarjetasTC.get(i).getDeuda()-montoInt);
-                    Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
-                }
-            }
             return true;
         }catch(Exception ex){
             return false;
         }
     }
-    public void Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasCD,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
-        for (int i = 0; i < TarjetasCD.size(); i++) {
-            //Metodo para la compra de cuotas pendiente
+    public boolean Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasCD,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
+        try{
+            Integer monto=Integer.parseInt(Valor);
+            for (int i = 0; i < TarjetasCD.size(); i++) {
+                if(TarjetasCD.get(i).getNumeroCuenta().equals(NumeroCuenta)){
+                    if(TarjetasCD.get(i).getCupoMaximo()>=monto){
+                        if(TarjetasCD.get(i).getCuotasSinInteres()<=numeroCuotas){
+                            //operaciones sin intereses
+                            TarjetasCD.get(i).setMontoDisponible(TarjetasCD.get(i).getMontoDisponible()-monto);
+                            Muday.setPatrimonio(Muday.getPatrimonio()-monto);
+                        }
+                        else{
+                            //operaciones con intereses
+                            Integer interes=0;
+                            monto+=interes;
+                            TarjetasCD.get(i).setMontoDisponible(TarjetasCD.get(i).getMontoDisponible()-monto);
+                            Muday.setPatrimonio(Muday.getPatrimonio()-monto);
+                        }
+                    }
+                }
+            }
+            return true;
+        }catch(Exception ex){
+            return false;
         }
     }
     
