@@ -18,14 +18,14 @@ public class Carga {
     Archivo Clientes = new Archivo();
     
     public Banco cargarBanco(Banco Muday){
-        auxiliar = cuentasCD.leerArchivo("Banco.in"); 	// G : Por qué cuentasCD en banco?
+        auxiliar = cuentasCD.leerArchivo("content/Archivos/Banco/Banco.in"); 	// G : Por qué cuentasCD en banco?
         Muday.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
         Muday.setFechaInicio(auxiliar.get(0).get(1));
         Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(2)));
         return Muday;
     }
     public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){
-        auxiliar = Clientes.leerArchivo("Clientes.in");
+        auxiliar = Clientes.leerArchivo("content/Archivos/Cargas/Clientes.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Cliente cliente_aux = new Cliente();
             cliente_aux.setRUT(auxiliar.get(i).get(0));
@@ -43,7 +43,7 @@ public class Carga {
         }
     }
     public void cargarDebito(ArrayList<Tarjeta_Debito> Lista, ArrayList<ArrayList<String>> Lista_aux){
-        auxiliar = cuentasCD.leerArchivo("CuentasCD.in");
+        auxiliar = cuentasCD.leerArchivo("content/Archivos/Cargas/CuentasCD.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Debito tarjeta_aux = new Tarjeta_Debito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -81,7 +81,7 @@ public class Carga {
         }
     }
     public void cargarCredito(ArrayList<Tarjeta_Credito> Lista, ArrayList<ArrayList<String>> Lista_aux){
-        auxiliar = cuentasTC.leerArchivo("CuentasTC.in");
+        auxiliar = cuentasTC.leerArchivo("content/Archivos/Cargas/CuentasTC.in");
         for (int i = 0; i < auxiliar.size(); i++) {
             Tarjeta_Credito tarjeta_aux = new Tarjeta_Credito();
             tarjeta_aux.setNumeroCuenta(auxiliar.get(i).get(0));
@@ -133,7 +133,7 @@ public class Carga {
         Operaciones operar = new Operaciones(); 
         Archivo arc1 = new Archivo();
         ArrayList<ArrayList<String>> list1 = new ArrayList<>();
-        list1 = arc1.leerArchivo("Simulador.in");
+        list1 = arc1.leerArchivo("content/Archivos/Cargas/Simulador.in");
         for (int i = 1; i < list1.size(); i++) {
             System.out.println(list1.get(i));
             if ("NEXTDAY".equals(list1.get(i).get(0))){
@@ -157,7 +157,7 @@ public class Carga {
                             operar.Pagar_Compra_Cuotas(TC,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3),Integer.valueOf(list1.get(i).get(4)));
                         }
                         else{
-                            operar.Pagar_Compra(CD,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
+                            operar.Pagar_Compra(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
                             // G : falta secundo argumento List Tarjetas TC
                         }
                         break;

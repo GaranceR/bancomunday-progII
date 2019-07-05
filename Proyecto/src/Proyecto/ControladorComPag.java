@@ -31,7 +31,7 @@ public class ControladorComPag implements ActionListener {
                         z++;
                     }
                     String[] datos2=datos[1].split(" ");
-                    if(op.Pagar_Compra(S.getCuentasCD(), S.getMuday(), datos2[0], datos[0],datos[2])){
+                    if(op.Pagar_Compra(S.getCuentasCD(),S.getCuentasTC(), S.getMuday(), datos2[0], datos[0],datos[2])){
                         //Enviar a archivos
                         V.setValido(1);
                         V.dispose();
