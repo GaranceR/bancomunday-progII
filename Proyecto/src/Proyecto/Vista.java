@@ -10,7 +10,7 @@ public class Vista extends JFrame {
 	private JButton b;
     private JButton buttonAbonar, buttonRetirar, buttonComprarPagar, 
     buttonComprarInversion, buttonRecibirTransferencia, buttonRealizarTransferencia, 
-    buttonGenerarCorte, buttonSimulacion, buttonAddUser, buttonAddConto;
+    buttonGenerarCorte, buttonSimulacion, buttonAddUser, buttonAddConto, buttonMonto, buttonCuenta, buttonRegresar, buttonContinuar;
     public ArrayList<JButton> botones = new ArrayList<JButton>();
     public ArrayList<JTextField> textos = new ArrayList<JTextField>();
     private JTextField tf;
@@ -136,57 +136,125 @@ public class Vista extends JFrame {
     }
     
     
-    //********************//
-    
+    //**************************//
+    // View for the Abonar part //
+    //**************************//
+
     public void crearAbonar(){
+    	
         getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();
-		p2=new JPanel();
-        String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
-        p1.setLayout(new GridLayout(1,3));
-        for(int x=0;x<c.length;x++){
-            tf=new JTextField(c[x]);
-            tf.setPreferredSize(new Dimension(10,100));
-            textos.add(tf);
-            System.out.println(textos.get(0).getText());
-            p1.add(textos.get(x));
-        }
+        
+        p1 = new JPanel();
+		p2 = new JPanel();
+        
+		// Not used anymore
+		//String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
+        
+		// Layout : 1 row and 3 columns
+		p1.setLayout(new GridLayout(1,2));
+        
+		// Create the JTextField : Cuenta
+		// And add it to the panel
+        tf = new JTextField("Cuenta");
+        textos.add(tf);
+        tf.setPreferredSize(new Dimension(200,200));
+        //System.out.println(textos.get(0).getText());
+        p1.add(tf);
+
+		// Create the JTextField : Monto
+		// And add it to the panel
+        tf = new JTextField("Monto");
+        textos.add(tf);
+        tf.setPreferredSize(new Dimension(200,200));
+        //System.out.println(textos.get(0).getText());
+        p1.add(tf);
+        
+        // Add the panel to the Frame layout
         add(p1, BorderLayout.NORTH);
-        for(int x=0;x<2;x++){
-            b=new JButton(a[x]);
-            botones.add(b);
-        }
+        
+        // Create the button Regresar
+        buttonRegresar = new JButton("Regresar");
+        botones.add(buttonRegresar);
+
+        // Create the button Continuar
+        buttonContinuar = new JButton("Continuar");
+        botones.add(buttonContinuar);
+        
+        // Layout : 1 row, 2 columns
         p2.setLayout(new GridLayout(1,2));
+        
+        // Add the buttons to the layout
         for(JButton x:botones){
             x.setPreferredSize(new Dimension(200,200));
             p2.add(x);
         }
+        
+        // Add the panel to the Frame layout
         add(p2, BorderLayout.SOUTH);
     }
+    
+    //***************************//
+    // View for the Retirar part //
+    //***************************//
+    
     public void crearRetirar(){ // G : Es necesario crear 2 metodos que son exactamente las mismas?? (crearAbonar = crearRetirar) :thinking:
+     	
         getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();
-		p2=new JPanel();
-        String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
-        p1.setLayout(new GridLayout(1,3));
-        for(int x=0;x<c.length;x++){
-            tf=new JTextField(c[x]);
-            tf.setPreferredSize(new Dimension(10,100));
-            textos.add(tf);
-            p1.add(textos.get(x));
-        }
+        
+        p1 = new JPanel();
+		p2 = new JPanel();
+        
+		// Not used anymore
+		//String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
+        
+		// Layout : 1 row and 3 columns
+		p1.setLayout(new GridLayout(1,3));
+        
+		// Create the JTextField : Cuenta
+		// And add it to the panel
+        tf = new JTextField("Cuenta");
+        textos.add(tf);
+        tf.setPreferredSize(new Dimension(200,200));
+        //System.out.println(textos.get(0).getText());
+        p1.add(tf);
+
+		// Create the JTextField : Monto
+		// And add it to the panel
+        tf = new JTextField("Monto");
+        textos.add(tf);
+        tf.setPreferredSize(new Dimension(200,200));
+        //System.out.println(textos.get(0).getText());
+        p1.add(tf);
+        
+        // Add the panel to the Frame layout
         add(p1, BorderLayout.NORTH);
-        for(int x=0;x<2;x++){
-            b=new JButton(a[x]);
-            botones.add(b);
-        }
+        
+        // Create the button Regresar
+        buttonRegresar = new JButton("Regresar");
+        botones.add(buttonRegresar);
+
+        // Create the button Continuar
+        buttonContinuar = new JButton("Continuar");
+        botones.add(buttonContinuar);
+        
+        // Layout : 1 row, 2 columns
         p2.setLayout(new GridLayout(1,2));
+        
+        // Add the buttons to the layout
         for(JButton x:botones){
-            x.setPreferredSize(new Dimension(110,110));
+            x.setPreferredSize(new Dimension(200,200));
             p2.add(x);
         }
+        
+        // Add the panel to the Frame layout
         add(p2, BorderLayout.SOUTH);
     }
+    
+    
+    //*********************************//
+    // View for the Pagar/Comprar part //
+    //*********************************//
+    
     public void crearComPag(){
         getContentPane().setLayout(new BorderLayout());
         p1=new JPanel();
