@@ -13,14 +13,14 @@ public class Operaciones {
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
-                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()+montoInt);
                     Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
                 }
             }
             for (int i = 0; i < TarjetasCD.size(); i++) {
-                if((TarjetasCD.get(i).getNumeroCuenta().equals(NumeroCuenta))){
-                    TarjetasCD.get(0).setDeuda(TarjetasCD.get(i).getDeuda()-montoInt);
+                if ((TarjetasCD.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
+                    TarjetasCD.get(i).setDeuda(TarjetasCD.get(i).getDeuda()-montoInt);
                     Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
                 }
             }
@@ -28,13 +28,14 @@ public class Operaciones {
         }catch(Exception ex){
             return false;
         }
-        
     }
+    
     public boolean Retirar(ArrayList<Tarjeta_Debito> TarjetasDB, Banco Muday, String Valor, String NumeroCuenta){
-        try{
+        // G : We can't "retirar" with Tarjetas de Credito ?! TO ADD ?
+    	try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
-                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()-montoInt);
                     Muday.setPatrimonio(Muday.getPatrimonio()-montoInt);
                 }
@@ -49,7 +50,7 @@ public class Operaciones {
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
-                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     if (TarjetasDB.get(i).getSaldo() > 0) {
                         TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()-montoInt);
                         Muday.setPatrimonio(Muday.getPatrimonio()-montoInt);
@@ -57,9 +58,10 @@ public class Operaciones {
                 }
             }
             for (int i = 0; i < TarjetasTC.size(); i++) {
-                if((TarjetasTC.get(i).getNumeroCuenta().equals(NumeroCuenta))){
-                    TarjetasTC.get(0).setDeuda(TarjetasTC.get(i).getDeuda()-montoInt);
-                    Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
+                if ((TarjetasTC.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
+                	// G : First, check MontoDisponible > 0 TODO ?
+                    TarjetasTC.get(i).setDeuda(TarjetasTC.get(i).getDeuda()+montoInt);
+                    Muday.setPatrimonio(Muday.getPatrimonio()-montoInt);
                 }
             }
             return true;
@@ -67,25 +69,26 @@ public class Operaciones {
             return false;
         }
     }
-    public void Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasTC,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
+    public void Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasTC, Banco Muday, String Valor, String NumeroCuenta, String Descripcion, Integer numeroCuotas){
         for (int i = 0; i < TarjetasTC.size(); i++) {
-            //Metodo para la compra de cuotas pendiente
+            // TODO Metodo para la compra de cuotas pendiente
         }
     }
     
-    public boolean Comprar_Inversion(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasTC,String Valor,String NumeroCuenta){
+    public boolean Comprar_Inversion(ArrayList<Tarjeta_Debito> TarjetasDB, ArrayList<Tarjeta_Credito> TarjetasTC, String Valor, String NumeroCuenta){
         try{    
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
-                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)){
+                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     if (TarjetasDB.get(i).getSaldo() > 0) {
                         TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()-montoInt);
                     }
                 }
             }
             for (int i = 0; i < TarjetasTC.size(); i++) {
-                if((TarjetasTC.get(i).getNumeroCuenta()).equals(NumeroCuenta)){
-                    if (TarjetasTC.get(i).getMontoDisponible()>0){
+                if ((TarjetasTC.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
+                    if (TarjetasTC.get(i).getMontoDisponible() > 0) {
+                    	// G : Igual se podría hacer si MontoDisponible < 0 con deuda, no ? TO ADD ? 
                     	TarjetasTC.get(i).setMontoDisponible(TarjetasTC.get(i).getMontoDisponible()-montoInt);
                     }
                 }
@@ -100,11 +103,13 @@ public class Operaciones {
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetasDB.size(); i++) {
-                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                if ((TarjetasDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     TarjetasDB.get(i).setSaldo(TarjetasDB.get(i).getSaldo()+montoInt);
                     Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
+                    // G : If the accounts (cuentas) are from the same bank then the patrimonio shouldn't change ?!
                 }
             }
+            // G : TODO ADD for TarjetaCredito also!
             return true;
         }catch(Exception ex){
             return false;
@@ -115,11 +120,13 @@ public class Operaciones {
         try{
             Integer montoInt = Integer.valueOf(Valor);
             for (int i = 0; i < TarjetaDB.size(); i++) {
-                if ((TarjetaDB.get(i).getNumeroCuenta()).equals(NumeroCuenta) ){
+                if ((TarjetaDB.get(i).getNumeroCuenta()).equals(NumeroCuenta)) {
                     TarjetaDB.get(i).setSaldo(TarjetaDB.get(i).getSaldo()-montoInt);
                     Muday.setPatrimonio(Muday.getPatrimonio()+montoInt);
+                    // G : Same as above : If the accounts (cuentas) are from the same bank then the patrimonio shouldn't change ?!
                 }
             }
+            // G : TODO ADD for TarjetaCredito also!
             return true;
         }catch(Exception ex){
             return false;

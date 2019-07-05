@@ -11,14 +11,17 @@ public class Sesion {
     private ArrayList<ArrayList<String>> cuentasTC_aux = new ArrayList<>();
     private ArrayList<Tarjeta_Debito> cuentasCD = new ArrayList<>();
     private ArrayList<ArrayList<String>> cuentasCD_aux = new ArrayList<>();
-    private Banco Muday=new Banco();
-    private Carga c=new Carga();
+    private Banco Muday = new Banco();
+    private Carga c = new Carga();
+    
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
+    
     public Banco getMuday(){
         return Muday;
     }
+    
     public ArrayList<ArrayList<String>> getClientes_aux() {
         return clientes_aux;
     }
@@ -40,17 +43,19 @@ public class Sesion {
     }
     
     public void Cargar(){
-        Muday=c.cargarBanco(Muday);
+        Muday = c.cargarBanco(Muday);
         c.cargarClientes(clientes,clientes_aux);
         c.cargarDebito(cuentasCD,cuentasCD_aux);
         c.cargarCredito(cuentasTC,cuentasTC_aux);
-        
     }
     
     public void Simulador() throws IOException{
         
         Banco Muday = new Banco();
-
+        // G : Why new Banco() if there is already a Bank as a private attribute ? 
+        
+        // G : TODO Display in Vista/GUI ? 
+        
         System.out.println("Los Clientes son: "+clientes);
         System.out.println("Las CuentasDebito son: "+cuentasCD_aux);
         System.out.println("Las CuentasCredito son: "+cuentasTC_aux);
@@ -65,7 +70,6 @@ public class Sesion {
         test2.Abonar(cuentasCD, cuentasTC, Muday,"5000","CD10-1234");
         System.out.println("El saldo despues de la operacion es: "+cuentasCD.get(0).getSaldo());
         
-        
         /****************
         // Testing Salida
         *****************/
@@ -73,11 +77,10 @@ public class Sesion {
         //Salida testSalida = new Salida(clientes);
         // Creating the initial structure of directories holding the file.out
         //testSalida.createInitialDirectoryStructure();
-        // Creating the directory structure for each clients
+        // Creating the directory structure for each client
         //testSalida.createDirectoryForClient(clientes);
         // Writing all CD files at once
         //testSalida.salidaDebito(clientes);
-                
         
     }
 }

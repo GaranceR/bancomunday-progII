@@ -19,7 +19,7 @@ public class Main {
         cont.iniciarVista();
         //session1.Simulador();
         
-        System.out.println("Holi is this working");
+        System.out.println("Holi is this working"); // G 
         
         /***********
         * Final Main

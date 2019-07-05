@@ -64,5 +64,5 @@ public class Tarjeta_Debito {
             asig.add(String.valueOf(descuento));
             asig.add(bloqueado);
             return asig;
-        }
+    }
 }

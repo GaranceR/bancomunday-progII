@@ -21,7 +21,7 @@ public class Carga {
         auxiliar = cuentasCD.leerArchivo("Banco.in"); 	// G : Por qué cuentasCD en banco?
         Muday.setPatrimonio(Integer.valueOf(auxiliar.get(0).get(0)));
         Muday.setFechaInicio(auxiliar.get(0).get(1));
-        Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(0))); // G : debería ser get(0).get(2) cierto? TO TEST
+        Muday.setComisionBancaria(Integer.valueOf(auxiliar.get(0).get(2)));
         return Muday;
     }
     public void cargarClientes(ArrayList<Cliente> List,ArrayList<ArrayList<String>> Lista_aux){

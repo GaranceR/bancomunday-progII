@@ -7,10 +7,12 @@ import javax.swing.*;
 public class Controlador implements ActionListener {
     private Vista v,aux;
     private Sesion S;
-    private JLabel label;
+    
+    private JLabel label;  // G : a que sirve eso en el Controlador ? TO DELETE ?
     private JTextField texto;
     private JButton boton;
-    public Controlador(Sesion s,Vista v) {
+    
+    public Controlador(Sesion s, Vista v) {
         this.v = v;
         this.S = s;
         S.Cargar();
@@ -25,7 +27,8 @@ public class Controlador implements ActionListener {
        v.setSize(600,300);
        v.setLocationRelativeTo(null);
        v.setVisible(true); 
-    }public void iniciarVista(Vista a) {
+    }
+    public void iniciarVista(Vista a) {
        a.setTitle("Banco Munday");
        a.pack();
        a.setSize(600,300);
@@ -33,6 +36,7 @@ public class Controlador implements ActionListener {
        a.setLocationRelativeTo(null);
        a.setVisible(true); 
     }
+    
     @Override
     public void actionPerformed(ActionEvent evento){
         S.Cargar();
@@ -69,7 +73,6 @@ public class Controlador implements ActionListener {
                 aux=new Vista(3);
                 iniciarVista(aux);
                 ControladorComPag op=new ControladorComPag(S,aux);
-            
         }
         //Comprar invercion
         else if((v.botones.get(3)==evento.getSource())){
@@ -84,26 +87,10 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            
         }
         //Recibir transferencia
         else if((v.botones.get(4)==evento.getSource())){
                 aux=new Vista(5);
-                iniciarVista(aux);
-                ControladorReaTrans op=new ControladorReaTrans(S,aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.tf[0].setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.tf[0].setText("");
-                }
-            
-        }
-        //Realizar transferencia
-        else if((v.botones.get(5)==evento.getSource())){
-                aux=new Vista(6);
                 iniciarVista(aux);
                 ControladorRecTrans op=new ControladorRecTrans(S,aux);
                 if(aux.getValido()==1){
@@ -114,11 +101,24 @@ public class Controlador implements ActionListener {
                     v.l.setText("  Error...");
                     v.tf[0].setText("");
                 }
-            
+        }
+        //Realizar transferencia
+        else if((v.botones.get(5)==evento.getSource())){
+                aux=new Vista(6);
+                iniciarVista(aux);
+                ControladorReaTrans op=new ControladorReaTrans(S,aux);
+                if(aux.getValido()==1){
+                    v.l.setText("  Exito...");
+                    v.tf[0].setText("Sin error");
+                }
+                else if(aux.getValido()==0){
+                    v.l.setText("  Error...");
+                    v.tf[0].setText("");
+                }
         }
         //Generar corte
         else if((v.botones.get(6)==evento.getSource())){
-            
+            // TODO
         }
         //Simulacion
         else if((v.botones.get(7)==evento.getSource())){
