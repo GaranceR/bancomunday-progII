@@ -23,6 +23,33 @@ public class Cliente {
 	private String contrasena;
 	private String morosidad;
 	
+	// G
+	// Constructors
+	public Cliente() {
+		this.RUT = null;
+		this.RUT = null;
+		this.nombre = null;
+		this.ocupacion = null;
+		this.correo = null;
+		this.telefono = null;
+		this.nombreUsuario = null;
+		this.contrasena = null;
+		this.morosidad = null;
+	}
+	
+	public Cliente(String RUT, String nombre, String ocupacion, String correo, String telefono, String nombreUsuario, String contrasena, String morosidad) {
+		this.RUT = RUT;
+		this.nombre = nombre;
+		this.ocupacion = ocupacion;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.nombreUsuario = nombreUsuario;
+		this.contrasena = contrasena;
+		this.morosidad = morosidad;
+	}
+	
+	// Getters & Setters
+	
 	public String getNombre() {
 		return nombre;
 	}

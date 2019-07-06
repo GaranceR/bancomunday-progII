@@ -70,7 +70,7 @@ public class Operaciones {
         }
     }
 
-    public boolean Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasTC,Banco Muday,String Valor,String NumeroCuenta,String Descripcion,Integer numeroCuotas){
+    public boolean Pagar_Compra_Cuotas(ArrayList<Tarjeta_Credito> TarjetasTC, Banco Muday, String Valor, String NumeroCuenta, String Descripcion, Integer numeroCuotas){
         try{
             Integer monto=Integer.parseInt(Valor);
             for (int i = 0; i < TarjetasTC.size(); i++) {

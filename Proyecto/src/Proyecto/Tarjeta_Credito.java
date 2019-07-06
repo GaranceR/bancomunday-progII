@@ -2,8 +2,11 @@ package Proyecto;
 
 import java.util.ArrayList;
 
-public class Tarjeta_Credito{
-    private String categoria,numeroCuenta,bloqueado,diaPago,diaCorte;
+public class Tarjeta_Credito {
+	
+	// Attributes 
+	
+    private String numeroCuenta,categoria,bloqueado,diaPago,diaCorte;
     private int montoDisponible;
     private int cuotasSinInteres;
     private double interesMensual;
@@ -11,6 +14,72 @@ public class Tarjeta_Credito{
     private int deuda;
     private int descuento;
 
+    // Constructors
+    
+    public Tarjeta_Credito() {
+    	String numeroCuenta = null;
+    	String categoria = null;
+    	String bloqueado = null;
+    	String diaPago = null;
+    	int montoDisponible = 0;
+        int cuotasSinInteres = 0;
+        double interesMensual = 0;
+        int cupoMaximo = 0;
+        int deuda = 0;
+        int descuento = 0;
+    }
+    
+    public Tarjeta_Credito(String numeroCuenta, String categoria, int montoDisponible, String bloqueado, String diaPago, int deuda) {
+		// Attributes with values provided in form
+    	this.numeroCuenta = numeroCuenta;
+		this.categoria = categoria;
+		this.montoDisponible = montoDisponible;
+		this.bloqueado = bloqueado;
+		this.diaPago = diaPago;
+		this.deuda = deuda;
+		
+		// Other attributes that we can calculate with the ones provided
+		this.diaCorte = String.valueOf((Integer.valueOf(diaPago) - 8));
+		this.setCatDetails(this, this.categoria);
+	}
+    
+    // Method to fill others fields according to Categoria
+    public void setCatDetails(Tarjeta_Credito cuentaTC, String categoria) {
+	    switch (categoria) {
+		    case "A":
+	            cuentaTC.setCategoria("Premium");
+	            cuentaTC.setCupoMaximo(300000);
+	            cuentaTC.setCuotasSinInteres(0);
+	            cuentaTC.setInteresMensual(5.9);
+	            cuentaTC.setDescuento(2000);
+	            break;
+	        case "B":
+	            cuentaTC.setCategoria("Cylean");
+	            cuentaTC.setCupoMaximo(700000);
+	            cuentaTC.setCuotasSinInteres(3);
+	            cuentaTC.setInteresMensual(4.2);
+	            cuentaTC.setDescuento(3000);
+	            break;
+	        case "C":
+	            cuentaTC.setCategoria("Copper");
+	            cuentaTC.setCupoMaximo(1000000);
+	            cuentaTC.setCuotasSinInteres(5);
+	            cuentaTC.setInteresMensual(3.1);
+	            cuentaTC.setDescuento(4000);
+	            break;
+	        case "D":
+	            cuentaTC.setCategoria("Gold");
+	            cuentaTC.setCupoMaximo(1200000);
+	            cuentaTC.setCuotasSinInteres(7);
+	            cuentaTC.setInteresMensual(1.9);
+	            cuentaTC.setDescuento(5000);
+	            break;
+	        default:
+	            break;
+	    }
+    }
+    
+    // Getters & Setters
     public String getCategoria() {
         return categoria;
     }
@@ -114,6 +183,18 @@ public class Tarjeta_Credito{
             asig.add(String.valueOf(deuda));       
             asig.add(bloqueado);
             return asig;
+    }
+    
+    @Override
+    public String toString() {
+    	return "Cuenta de Credito : " + this.numeroCuenta + " Categoria : " + this.categoria + " Bloqueado : " + this.bloqueado 
+    			+ " Dia de pago : " + diaPago + " Dia de Corte : " + diaCorte
+    			+ " Monto disponible : " + this.montoDisponible
+    			+ " Cuotas sin interes : " + this.cuotasSinInteres
+    			+ " Interes mensual : " + this.interesMensual
+    			+ " Cupo maximo : " + this.cupoMaximo
+    			+ "  Deuda : "+ this.deuda
+    			+ " Descuento : " + this.descuento;
     }
     
     

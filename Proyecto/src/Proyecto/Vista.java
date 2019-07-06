@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class Vista extends JFrame {
 	
-	
 	private JButton b;
     private JButton buttonAbonar, buttonRetirar, buttonComprarPagar, 
     buttonComprarInversion, buttonRecibirTransferencia, buttonRealizarTransferencia, 
     buttonGenerarCorte, buttonSimulacion, buttonAddUser, buttonAddConto, buttonMonto, buttonCuenta, buttonRegresar, buttonContinuar;
     public ArrayList<JButton> botones = new ArrayList<JButton>();
+    public ArrayList<JRadioButton> radioButtons = new ArrayList<JRadioButton>();
     public ArrayList<JTextField> textos = new ArrayList<JTextField>();
     private JTextField tf;
     public JLabel labelPanel;
@@ -50,9 +50,12 @@ public class Vista extends JFrame {
                 crearReaTrans();
                 break;
             case 7:
-            	crearInsertCuenta();
+            	crearInsCuentaDetail("TC");
             	break;
             case 8:
+            	crearInsCuentaDetail("CD");
+            	break;
+            case 9:
             	crearInsertCliente();
             	break;
             default:
@@ -105,7 +108,9 @@ public class Vista extends JFrame {
         buttonSimulacion= new JButton("Simulacion");        
         botones.add(buttonSimulacion);
 
-        buttonAddConto= new JButton("Insertar cuenta");     
+        buttonAddConto= new JButton("Insertar cuenta Credito");     
+        botones.add(buttonAddConto);
+        buttonAddConto= new JButton("Insertar cuenta Debito");     
         botones.add(buttonAddConto);
         
         buttonAddUser= new JButton("Insertar cliente");        
@@ -354,6 +359,7 @@ public class Vista extends JFrame {
 	    add(p1, BorderLayout.SOUTH);
 	    for(int x=0;x<3;x++){
 	        tf=new JTextField(c[x]);
+	        // TO ADD ??  textos.add(tf);
 	        p2.add(tf);
 	    }
 	    add(p2, BorderLayout.NORTH);
@@ -361,37 +367,53 @@ public class Vista extends JFrame {
 	
 	public void crearInsertCliente() {
 		getContentPane().setLayout(new BorderLayout());
+		
+		JPanel p0 = new JPanel();
 		p1 = new JPanel();
 		p2 = new JPanel();
-		
+				
 		// Grid Layout # rows, # columns
-		p1.setLayout(new GridLayout(8,3));
+		p0.setLayout(new GridLayout(8,1));
+		p1.setLayout(new GridLayout(8,2));
+		//p1.setLayout(new GridLayout(8,3));
 		p2.setLayout(new GridLayout(1,2));
 		
+		/*
+		 *  Creating Textfields, adding them to list of 
+		 *  textfields textos to be able to get them in 
+		 *  the Controller + adding textfields to panel
+		 */
+		for (int i=0; i<8; i++) {
+			tf = new JTextField();
+            textos.add(tf);
+			p1.add(tf);
+		}
+		
 		// Creating Labels + Textfields + Buttons
+
 		JLabel labelRUT = new JLabel("RUT : ");		
-		JTextField tfRUT = new JTextField();
+		//JTextField tfRUT = new JTextField();
 
 		JLabel labelNombre = new JLabel("Nombre : ");
-		JTextField tfNombre = new JTextField();
+		//JTextField tfNombre = new JTextField();
 		
 		JLabel labelOcup = new JLabel("Ocupacion : ");
-		JTextField tfOCup = new JTextField();
+		//JTextField tfOCup = new JTextField();
 		
 		JLabel labelCorreo = new JLabel("Correo : ");
-		JTextField tfCorreo = new JTextField();
+		//JTextField tfCorreo = new JTextField();
 		
 		JLabel labelTel = new JLabel("Telefono : ");
-		JTextField tfTel = new JTextField();
+		//JTextField tfTel = new JTextField();
 		
 		JLabel labelNbUsuario = new JLabel("Nombre de Usuario : ");
-		JTextField tfNbUsuario = new JTextField();
+		//JTextField tfNbUsuario = new JTextField();
 		
 		JLabel labelContr = new JLabel("Contraseña : ");
-		JTextField tfContr = new JTextField();
+		//JTextField tfContr = new JTextField();
 		
-		JLabel labelMoros = new JLabel("Morosidad : ");
-		JTextField tfMoros = new JTextField();
+		JLabel labelMoros = new JLabel("Morosidad (false/ true) : "); // G
+		//JTextField tfMoros = new JTextField();
 		
 		JButton buttonRegresar = new JButton("Regresar");
 		botones.add(buttonRegresar);
@@ -402,77 +424,125 @@ public class Vista extends JFrame {
 		buttonContinuar.setPreferredSize(new Dimension(110,110));
 		
 		// Adding components to Panel
-		p1.add(labelRUT);
-		p1.add(tfRUT);
-		p1.add(labelNombre);
-		p1.add(tfNombre);
-		p1.add(labelOcup);
-		p1.add(tfOCup);
-		p1.add(labelCorreo);
-		p1.add(tfCorreo);
-		p1.add(labelTel);
-		p1.add(tfTel);
-		p1.add(labelNbUsuario);
-		p1.add(tfNbUsuario);
-		p1.add(labelContr);
-		p1.add(tfContr);
-		p1.add(labelMoros);
-		p1.add(tfMoros);
+		// TODO : REFACTOR with for loop?!
+		
+		p0.add(labelRUT);
+		//p1.add(tfRUT);
+		p0.add(labelNombre);
+		//p1.add(tfNombre);
+		p0.add(labelOcup);
+		//p1.add(tfOCup);
+		p0.add(labelCorreo);
+		//p1.add(tfCorreo);
+		p0.add(labelTel);
+		//p1.add(tfTel);
+		p0.add(labelNbUsuario);
+		//p1.add(tfNbUsuario);
+		p0.add(labelContr);
+		//p1.add(tfContr);
+		p0.add(labelMoros);
+		//p1.add(tfMoros);
 		
 		p2.add(buttonRegresar);
 		p2.add(buttonContinuar);
 		
-	    add(p1, BorderLayout.NORTH);
+		// Add panels to general Layouts
+		add(p0, BorderLayout.WEST);
+		add(p1, BorderLayout.CENTER);
+	    //add(p1, BorderLayout.NORTH);
 	    add(p2, BorderLayout.SOUTH);
 	}
 	
+	/*
 	public void crearInsertCuenta() {
 		getContentPane().setLayout(new BorderLayout());
+		
 		JPanel p0 = new JPanel();
-		p1 = new JPanel();
-		p2 = new JPanel();
 		
 		// Grid Layout # rows, # columns
 		p0.setLayout(new GridLayout(1,3));
-		p1.setLayout(new GridLayout(9,3)); // CHANGE TO ,2 to see if it changes smth ? 
-		p2.setLayout(new GridLayout(1,2));
 		
-		// Creating Labels + Textfields + Buttons
+		// Creating Radiobuttons
 		
 		JLabel labelTipo = new JLabel("Tipo de Cuenta : ");
 		
 		JRadioButton optCredito = new JRadioButton("Crédito (TC)");
 		JRadioButton optDebito = new JRadioButton("Débito (CD)");
+		radioButtons.add(optCredito);
+		radioButtons.add(optDebito);
 		ButtonGroup tipoCuenta = new ButtonGroup();
+		// adding Radio buttons to the list of Radiobuttons to be able 
+		// to handle them in the Controller
 		tipoCuenta.add(optCredito);
 		tipoCuenta.add(optDebito);
 		
-		JLabel labelNumCuenta = new JLabel("Numero de Cuenta : ");		
-		JTextField tfNumCuenta = new JTextField();
+		// adding RadioButtons to panel
+		p0.add(labelTipo);
+		p0.add(optCredito);
+		p0.add(optDebito);
 
+		// Adding panels to main frame
+		add(p0, BorderLayout.NORTH);
+	}
+	*/
+	
+	public void crearInsCuentaDetail(String choice) {
+		getContentPane().setLayout(new BorderLayout());
+		
+		p1 = new JPanel();
+		p2 = new JPanel();
+		JPanel p3 = new JPanel();
+		
+		// Grid Layout # rows, # columns
+		p1.setLayout(new GridLayout(8,1));
+		p2.setLayout(new GridLayout(8,1));
+		//p1.setLayout(new GridLayout(8,3)); // CHANGE TO ,2 to see if it changes smth ? 
+		p3.setLayout(new GridLayout(1,2));
+		
+		/*
+		 *  Creating Textfields, adding them to list of 
+		 *  textfields textos to be able to get them in 
+		 *  the Controller + adding textfields to panel
+		 */
+		int nbTf=0;
+		if (choice.equals("CD")) nbTf = 4;
+		else if (choice.equals("TC")) nbTf = 6;
+		
+		for (int i=0; i<nbTf; i++) {
+			tf = new JTextField();
+            textos.add(tf);
+			p2.add(tf);
+		}
+		
+		// Creating Labels + Buttons
+		
+		// Creating common labels
+		JLabel labelNumCuenta = new JLabel("Numero de Cuenta : ");		
 		JLabel labelCategoria = new JLabel("Categoria : ");
-		JTextField tfCategoria = new JTextField();
-		
 		JLabel labelMontoDispo = new JLabel("Monto Disponible / Saldo : ");
-		JTextField tfMontoDispo = new JTextField();
-		
-		// CD Debito only
-		JLabel labelMontoMax = new JLabel("Monto máximo (CD) : ");
-		JTextField tfMontoMax = new JTextField();
-		
 		JLabel labelBloqueado = new JLabel("Bloqueado* : ");
-		JTextField tfBloqueado = new JTextField();
 		
-		// TC Credito only
-		JLabel labelDiaPago = new JLabel("Dia de Pago (TC) : ");
-		JTextField tfDiaPago = new JTextField();
+		// adding common labels to panel
+		p1.add(labelNumCuenta);
+		p1.add(labelCategoria);
+		p1.add(labelMontoDispo);
+		p1.add(labelBloqueado);
 		
-		// TC Credito only
-		JLabel labelDeuda = new JLabel("Deuda* (TC) : ");
-		JTextField tfDeuda = new JTextField();
+		//if (optCredito.isSelected()) {
+		if (choice.equals("TC")) {
+		// Bug : textfields already created + doesn't reload page
+			// TC Credito only
+			JLabel labelDiaPago = new JLabel("Dia de Pago (TC) : ");
+			JLabel labelDeuda = new JLabel("Deuda* (TC) : ");
+			
+			p1.add(labelDiaPago);
+			p1.add(labelDeuda);
+		}
 		
+		// Todas cuentas
 		JLabel labelInfo = new JLabel("* si NO son nuevas cuentas");
-		
+		p1.add(labelInfo);
+
 		JButton buttonRegresar = new JButton("Regresar");
 		botones.add(buttonRegresar);
         buttonRegresar.setPreferredSize(new Dimension(110,110));
@@ -481,34 +551,14 @@ public class Vista extends JFrame {
 		botones.add(buttonContinuar);
 		buttonContinuar.setPreferredSize(new Dimension(110,110));
 		
-		// Adding components to panel
+		// Adding buttons to panel
+		p3.add(buttonRegresar);
+		p3.add(buttonContinuar);
 		
-		p0.add(labelTipo);
-		p0.add(optCredito);
-		p0.add(optDebito);
-		
-		p1.add(labelNumCuenta);
-		p1.add(tfNumCuenta);
-		p1.add(labelCategoria);
-		p1.add(tfCategoria);
-		p1.add(labelMontoDispo);
-		p1.add(tfMontoDispo);
-		p1.add(labelMontoMax);
-		p1.add(tfMontoMax);
-		p1.add(labelBloqueado);
-		p1.add(tfBloqueado);
-		p1.add(labelDiaPago);
-		p1.add(tfDiaPago);
-		p1.add(labelDeuda);
-		p1.add(tfDeuda);
-		p1.add(labelInfo);
-		
-		p2.add(buttonRegresar);
-		p2.add(buttonContinuar);
-		
-		add(p0, BorderLayout.NORTH);
-	    add(p1, BorderLayout.CENTER);
-	    add(p2, BorderLayout.SOUTH);
+		// Adding panels to main frame
+		add(p1, BorderLayout.WEST);
+		add(p2, BorderLayout.CENTER);
+	    add(p3, BorderLayout.SOUTH);
 
 	}
 }

@@ -39,7 +39,6 @@ public class Controlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent evento){
-        S.Cargar();
         //Abonar
         if(v.botones.get(0)==evento.getSource()){
                 aux=new Vista(1);
@@ -133,10 +132,24 @@ public class Controlador implements ActionListener {
             }
         }
         
-        // Insertar Cuenta
+        // Insertar Cuenta Credito TC
         else if ((v.botones.get(8) == evento.getSource())) {
         	aux = new Vista(7);
-            ControladorInsCuenta op=new ControladorInsCuenta(S,aux);
+            ControladorInsCuentaTC op = new ControladorInsCuentaTC(S,aux);
+        	iniciarVista(aux);
+        	if(aux.getValido()==1){ 	
+                v.labelPanel.setText("  Exito...");
+                v.textos.get(0).setText("Sin error");
+            }
+            else if(aux.getValido()==0){
+                v.labelPanel.setText("  Error...");
+                v.textos.get(0).setText("");
+            }
+        }
+        // Insertar Cuenta Debito CD
+        else if ((v.botones.get(9) == evento.getSource())) {
+        	aux = new Vista(8);
+            ControladorInsCuentaCD op = new ControladorInsCuentaCD(S,aux);
         	iniciarVista(aux);
         	if(aux.getValido()==1){ 	
                 v.labelPanel.setText("  Exito...");
@@ -148,9 +161,9 @@ public class Controlador implements ActionListener {
             }
         }
         // Insertar Cliente
-        else if ((v.botones.get(9) == evento.getSource())) {
-        	aux = new Vista(8);
-            ControladorInsCliente op=new ControladorInsCliente(S,aux);
+        else if ((v.botones.get(10) == evento.getSource())) {
+        	aux = new Vista(9);
+            ControladorInsCliente op = new ControladorInsCliente(S,aux);
         	iniciarVista(aux);
         	if(aux.getValido()==1){ 	
                 v.labelPanel.setText("  Exito...");
