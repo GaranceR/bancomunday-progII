@@ -189,26 +189,28 @@ public class Vista extends JFrame {
         }
         add(p2, BorderLayout.NORTH);
     }
-}
-public void crearReaTrans(){
-    getContentPane().setLayout(new BorderLayout());
-    p1=new JPanel();
-    p2=new JPanel();
-    String[] a={"Regresar","Continuar"},c={"Cuenta de origen","Monto","Cuenta de destino"};
-    p1.setLayout(new GridLayout(1,2));
-    p2.setLayout(new GridLayout(1,3));
-    for(int x=0;x<2;x++){
-        b=new JButton(a[x]);
-        botones.add(b);
+    public void crearReaTrans(){
+        getContentPane().setLayout(new BorderLayout());
+        p1=new JPanel();
+        p2=new JPanel();
+        String[] a={"Regresar","Continuar"},c={"Cuenta de origen","Monto","Cuenta de destino"};
+        p1.setLayout(new GridLayout(1,2));
+        p2.setLayout(new GridLayout(1,3));
+        for(int x=0;x<2;x++){
+            b=new JButton(a[x]);
+            botones.add(b);
+        }
+        for(JButton x:botones){
+            x.setPreferredSize(new Dimension(110,110));
+            p1.add(x);
+        }
+        add(p1, BorderLayout.SOUTH);
+        for(int x=0;x<2;x++){
+            tf=new JTextField(c[x]);
+            tf.setPreferredSize(new Dimension(10,100));
+            textos.add(tf);
+            p1.add(textos.get(x));
+        }
+        add(p2, BorderLayout.NORTH);
     }
-    for(JButton x:botones){
-        x.setPreferredSize(new Dimension(110,110));
-        p1.add(x);
-    }
-    add(p1, BorderLayout.SOUTH);
-    for(int x=0;x<3;x++){
-        tf[x]=new JTextField(c[x]);
-        p2.add(tf[x]);
-    }
-    add(p2, BorderLayout.NORTH);
 }

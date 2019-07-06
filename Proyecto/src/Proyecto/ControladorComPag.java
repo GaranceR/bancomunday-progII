@@ -36,7 +36,7 @@ public class ControladorComPag implements ActionListener {
                         V.setValido(1);
                         V.dispose();
                     }
-                    else if(op.Pagar_Compra_Cuotas(S.getCuentasTC(), S.getMuday(), datos[1], datos[0], datos[2], z)){
+                    else if(op.Pagar_Compra_Cuotas(S.getCuentasTC(), S.getMuday(), datos2[0], datos[0], datos[2], Integer.parseInt(datos2[1]))){
                         //Enviar a archivos
                         V.setValido(1);
                         V.dispose();

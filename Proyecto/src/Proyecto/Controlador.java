@@ -36,6 +36,18 @@ public class Controlador implements ActionListener {
        a.setLocationRelativeTo(null);
        a.setVisible(true); 
     }
+    public void cambiarDatos(Integer a){
+        switch(a){
+            case 1:
+                v.l.setText("  Exito...");
+                v.textos.get(0).setText("Sin error");
+                break;
+            case 0:
+                v.l.setText("  Error...");
+                v.textos.get(0).setText("");
+                break;
+        }
+    }
     
     @Override
     public void actionPerformed(ActionEvent evento){
@@ -45,76 +57,42 @@ public class Controlador implements ActionListener {
                 aux=new Vista(1);
                 ControladorAbonar op=new ControladorAbonar(S,aux);
                 iniciarVista(aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.textos.get(0).setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.textos.get(0).setText("");
-                }
+                this.cambiarDatos(aux.getValido());
         }
         //Retirar
         else if((v.botones.get(1)==evento.getSource())){
                 aux=new Vista(2);
                 ControladorRetirar op=new ControladorRetirar(S,aux);
                 iniciarVista(aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.textos.get(0).setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.textos.get(0).setText("");
-                }
+                this.cambiarDatos(aux.getValido());
         }
         //Compar/Pagar
         else if((v.botones.get(2)==evento.getSource())){
                 aux=new Vista(3);
                 ControladorComPag op=new ControladorComPag(S,aux);
                 iniciarVista(aux);
+                this.cambiarDatos(aux.getValido());
         }
         //Comprar invercion
         else if((v.botones.get(3)==evento.getSource())){
                 aux=new Vista(4);
                 ControladorComInv op=new ControladorComInv(S,aux);
                 iniciarVista(aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.textos.get(0).setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.textos.get(0).setText("");
-                }
+                this.cambiarDatos(aux.getValido());
         }
         //Recibir transferencia
         else if((v.botones.get(4)==evento.getSource())){
                 aux=new Vista(5);
                 ControladorReaTrans op=new ControladorReaTrans(S,aux);
                 iniciarVista(aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.textos.get(0).setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.textos.get(0).setText("");
-                }
+                this.cambiarDatos(aux.getValido());
         }
         //Realizar transferencia
         else if((v.botones.get(5)==evento.getSource())){
                 aux=new Vista(6);
                 ControladorRecTrans op=new ControladorRecTrans(S,aux);
                 iniciarVista(aux);
-                if(aux.getValido()==1){
-                    v.l.setText("  Exito...");
-                    v.textos.get(0).setText("Sin error");
-                }
-                else if(aux.getValido()==0){
-                    v.l.setText("  Error...");
-                    v.textos.get(0).setText("");
-                }
+                this.cambiarDatos(aux.getValido());
         }
         //Generar corte
         else if((v.botones.get(6)==evento.getSource())){
@@ -124,12 +102,9 @@ public class Controlador implements ActionListener {
         else if((v.botones.get(7)==evento.getSource())){
             try {
                 S.Simulador();
-                v.l.setText("  Exito...");
-                v.textos.get(0).setText("Sin error");
+                this.cambiarDatos(aux.getValido());
             } catch (IOException ex) {
                 //Mensaje de alerta
-                v.l.setText("  Error...");
-                v.textos.get(0).setText("");
             }
         }
     }
