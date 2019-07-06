@@ -9,7 +9,7 @@ public class Vista extends JFrame {
 	private JButton b;
     private JButton buttonAbonar, buttonRetirar, buttonComprarPagar, 
     buttonComprarInversion, buttonRecibirTransferencia, buttonRealizarTransferencia, 
-    buttonGenerarCorte, buttonSimulacion, buttonAddUser, buttonAddConto, buttonMonto, buttonCuenta, buttonRegresar, buttonContinuar;
+    buttonGenerarCorte, buttonVerEstado, buttonAddUser, buttonAddConto, buttonMonto, buttonCuenta, buttonRegresar, buttonContinuar;
     public ArrayList<JButton> botones = new ArrayList<JButton>();
     public ArrayList<JRadioButton> radioButtons = new ArrayList<JRadioButton>();
     public ArrayList<JTextField> textos = new ArrayList<JTextField>();
@@ -90,10 +90,10 @@ public class Vista extends JFrame {
         buttonRetirar = new JButton("Retirar");
         botones.add(buttonRetirar);
 
-        buttonComprarPagar = new JButton("Comprar/Pagar");
+        buttonComprarPagar = new JButton("Comprar / Pagar");
         botones.add(buttonComprarPagar);
 
-        buttonComprarInversion = new JButton("Comprar inversion");
+        buttonComprarInversion = new JButton("Comprar Inversion");
         botones.add(buttonComprarInversion);
 
         buttonRecibirTransferencia = new JButton("Recibir Transferencia");
@@ -105,15 +105,15 @@ public class Vista extends JFrame {
         buttonGenerarCorte = new JButton("Generar Corte");
         botones.add(buttonGenerarCorte);
 
-        buttonSimulacion= new JButton("Simulacion");        
-        botones.add(buttonSimulacion);
+        buttonVerEstado= new JButton("Ver Estado Datos Banco");        
+        botones.add(buttonVerEstado);
 
-        buttonAddConto= new JButton("Insertar cuenta Credito");     
+        buttonAddConto= new JButton("Insertar Cuenta Credito");     
         botones.add(buttonAddConto);
-        buttonAddConto= new JButton("Insertar cuenta Debito");     
+        buttonAddConto= new JButton("Insertar Cuenta Debito");     
         botones.add(buttonAddConto);
         
-        buttonAddUser= new JButton("Insertar cliente");        
+        buttonAddUser= new JButton("Insertar Cliente");        
         botones.add(buttonAddUser);
         
         // Set the size for the buttons
@@ -161,23 +161,21 @@ public class Vista extends JFrame {
 		// Not used anymore
 		//String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
         
-		// Layout : 1 row and 3 columns
+		// Layout : # row, # columns
 		p1.setLayout(new GridLayout(1,2));
         
 		// Create the JTextField : Cuenta
 		// And add it to the panel
         tf = new JTextField("Cuenta");
         textos.add(tf);
-        tf.setPreferredSize(new Dimension(200,200));
-        //System.out.println(textos.get(0).getText());
+        tf.setPreferredSize(new Dimension(10,100));
         p1.add(tf);
 
 		// Create the JTextField : Monto
 		// And add it to the panel
         tf = new JTextField("Monto");
         textos.add(tf);
-        tf.setPreferredSize(new Dimension(200,200));
-        //System.out.println(textos.get(0).getText());
+        tf.setPreferredSize(new Dimension(10,100));
         p1.add(tf);
         
         // Add the panel to the Frame layout
@@ -196,7 +194,7 @@ public class Vista extends JFrame {
         
         // Add the buttons to the layout
         for(JButton x:botones){
-            x.setPreferredSize(new Dimension(200,200));
+            x.setPreferredSize(new Dimension(110,110));
             p2.add(x);
         }
         
@@ -208,7 +206,9 @@ public class Vista extends JFrame {
     // View for the Retirar part //
     //***************************//
     
-    public void crearRetirar(){ // G : Es necesario crear 2 metodos que son exactamente las mismas?? (crearAbonar = crearRetirar) :thinking:
+    public void crearRetirar(){ 
+    	// Es necesario crear 2 metodos que son exactamente las mismas?? (crearAbonar = crearRetirar)
+    	// TODO FACTORIZE!?
      	
         getContentPane().setLayout(new BorderLayout());
         
@@ -218,23 +218,21 @@ public class Vista extends JFrame {
 		// Not used anymore
 		//String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
         
-		// Layout : 1 row and 3 columns
-		p1.setLayout(new GridLayout(1,3));
-        
+		// Layout : # row, # columns
+		p1.setLayout(new GridLayout(1,2));
+		
 		// Create the JTextField : Cuenta
 		// And add it to the panel
         tf = new JTextField("Cuenta");
         textos.add(tf);
-        tf.setPreferredSize(new Dimension(200,200));
-        //System.out.println(textos.get(0).getText());
+        tf.setPreferredSize(new Dimension(10,100));
         p1.add(tf);
 
 		// Create the JTextField : Monto
 		// And add it to the panel
         tf = new JTextField("Monto");
         textos.add(tf);
-        tf.setPreferredSize(new Dimension(200,200));
-        //System.out.println(textos.get(0).getText());
+        tf.setPreferredSize(new Dimension(10,100));
         p1.add(tf);
         
         // Add the panel to the Frame layout
@@ -253,7 +251,7 @@ public class Vista extends JFrame {
         
         // Add the buttons to the layout
         for(JButton x:botones){
-            x.setPreferredSize(new Dimension(200,200));
+            x.setPreferredSize(new Dimension(110,110));
             p2.add(x);
         }
         
@@ -263,107 +261,158 @@ public class Vista extends JFrame {
     
     
     //*********************************//
-    // View for the Pagar/Comprar part //
+    // View for the Comprar/Pagar part //
     //*********************************//
     
     public void crearComPag(){
-        getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();
-		p2=new JPanel();
-        String[] a={"Regresar","Pagar/Comprar"},c={"Cuenta","Monto/Cuotas","Descripcion"}; // G : falta Cuotas (igual TODO en Operaciones)
-        p1.setLayout(new GridLayout(1,2));
-        for(int x=0;x<2;x++){
-            b=new JButton(a[x]);
+        
+    	getContentPane().setLayout(new BorderLayout());
+        
+    	p1 = new JPanel();
+		p2 = new JPanel();
+        
+		String[] a = {"Regresar","Pagar/Comprar"}, c = {"Cuenta","Monto/Cuotas","Descripcion"}; 
+        
+		p1.setLayout(new GridLayout(1,2));
+        
+		for (int x=0; x<2; x++) {
+            b = new JButton(a[x]);
             botones.add(b);
         }
-        for(JButton x:botones){
+        for (JButton x:botones) {
             x.setPreferredSize(new Dimension(110,110));
             p1.add(x);
         }
+        
         add(p1, BorderLayout.SOUTH);
-        p2.setLayout(new GridLayout(1,3));
-        for(int x=0;x<3;x++){
-            tf=new JTextField(c[x]);
+        
+        p2.setLayout(new GridLayout(1,3)); // TO CHANGE?
+        
+        for (int x=0; x<3; x++) {
+            tf = new JTextField(c[x]);
             tf.setPreferredSize(new Dimension(10,100));
             textos.add(tf);
         }
-        for(JTextField x:textos){
+        for (JTextField x:textos) {
             p2.add(x);
         }
+        
         add(p2, BorderLayout.NORTH);
     }
+    
+	//*************************************//
+	// View for the Comprar Inversión part //
+	//************************************//
+    
     public void crearComInv(){
-        getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();
-        p2=new JPanel();
-        String[] a={"Regresar","Continuar"},c={"Cuenta","Monto"};
+        
+    	getContentPane().setLayout(new BorderLayout());
+        
+    	p1 = new JPanel();
+        p2 = new JPanel();
+        
+        String[] a = {"Regresar","Continuar"}, c = {"Cuenta","Monto"};
+        
         p1.setLayout(new GridLayout(1,2));
         p2.setLayout(new GridLayout(1,3));
-        for(int x=0;x<2;x++){
-            b=new JButton(a[x]);
+        
+        for (int x=0; x<2; x++) {
+            b = new JButton(a[x]);
             botones.add(b);
         }
-        for(JButton x:botones){
+        for (JButton x:botones) {
             x.setPreferredSize(new Dimension(110,110));
             p1.add(x);
         }
+        
         add(p1, BorderLayout.SOUTH);
-        for(int x=0;x<2;x++){
-            tf=new JTextField(c[x]);
+        
+        for (int x=0; x<2; x++) {
+            tf = new JTextField(c[x]);
             tf.setPreferredSize(new Dimension(10,100));
             textos.add(tf);
-            p1.add(textos.get(x));
+            p2.add(textos.get(x));
         }
         add(p2, BorderLayout.NORTH);
     }
+    
+    //*****************************************//
+    // View for the Recibir Transferencia part //
+    //*****************************************//
+    
     public void crearRecTrans(){
-        getContentPane().setLayout(new BorderLayout());
-        p1=new JPanel();
-        p2=new JPanel();
-        String[] a={"Regresar","Continuar"},c={"Cuenta de origen","Monto","Cuenta de destino"};
+        
+    	getContentPane().setLayout(new BorderLayout());
+        
+    	p1 = new JPanel();
+        p2 = new JPanel();
+        
+        String[] a = {"Regresar","Continuar"}, c = {"Cuenta de origen","Monto","Cuenta de destino"};
+        
         p1.setLayout(new GridLayout(1,2));
         p2.setLayout(new GridLayout(1,3));
-        for(int x=0;x<2;x++){
-            b=new JButton(a[x]);
+        
+        for (int x=0; x<2; x++) {
+            b = new JButton(a[x]);
             botones.add(b);
         }
-        for(JButton x:botones){
+        for (JButton x:botones) {
             x.setPreferredSize(new Dimension(110,110));
             p1.add(x);
         }
+        // Add buttons panel 
         add(p1, BorderLayout.SOUTH);
-        for(int x=0;x<3;x++){
-            tf=new JTextField(c[x]);
+        
+        for (int x=0; x<3; x++) {
+            tf = new JTextField(c[x]);
             tf.setPreferredSize(new Dimension(10,100));
             textos.add(tf);
-            p1.add(textos.get(x));
+            p2.add(textos.get(x));
         }
+        // Add textfields panel
         add(p2, BorderLayout.NORTH);
     }
 
+    //*****************************************//
+    // View for the Realizar Transferencia part //
+    //*****************************************//
+    
 	public void crearReaTrans(){
-	    getContentPane().setLayout(new BorderLayout());
-	    p1=new JPanel();
-	    p2=new JPanel();
-	    String[] a={"Regresar","Continuar"},c={"Cuenta de origen","Monto","Cuenta de destino"};
+	    // could have been factorized with the precedent view
+		getContentPane().setLayout(new BorderLayout());
+	    
+		p1 = new JPanel();
+	    p2 = new JPanel();
+	   
+	    String[] a = {"Regresar","Continuar"}, c = {"Cuenta de origen","Monto","Cuenta de destino"};
+	    
 	    p1.setLayout(new GridLayout(1,2));
 	    p2.setLayout(new GridLayout(1,3));
-	    for(int x=0;x<2;x++){
-	        b=new JButton(a[x]);
+	    
+	    for (int x=0; x<2; x++) {
+	        b = new JButton(a[x]);
 	        botones.add(b);
 	    }
-	    for(JButton x:botones){
+	    for (JButton x:botones) {
 	        x.setPreferredSize(new Dimension(110,110));
 	        p1.add(x);
 	    }
+        // Add buttons panel 
 	    add(p1, BorderLayout.SOUTH);
-	    for(int x=0;x<3;x++){
+	    
+	    for (int x=0; x<3; x++){
 	        tf=new JTextField(c[x]);
-	        // TO ADD ??  textos.add(tf);
+	        tf.setPreferredSize(new Dimension(10,100));
+            textos.add(tf);
 	        p2.add(tf);
 	    }
+        // Add textfields panel
 	    add(p2, BorderLayout.NORTH);
 	}
+	
+    //************************************//
+    // View for the Insertar Cliente part //
+    //************************************//
 	
 	public void crearInsertCliente() {
 		getContentPane().setLayout(new BorderLayout());
@@ -375,7 +424,6 @@ public class Vista extends JFrame {
 		// Grid Layout # rows, # columns
 		p0.setLayout(new GridLayout(8,1));
 		p1.setLayout(new GridLayout(8,2));
-		//p1.setLayout(new GridLayout(8,3));
 		p2.setLayout(new GridLayout(1,2));
 		
 		/*
@@ -389,31 +437,16 @@ public class Vista extends JFrame {
 			p1.add(tf);
 		}
 		
-		// Creating Labels + Textfields + Buttons
+		// Creating Labels + Buttons
 
 		JLabel labelRUT = new JLabel("RUT : ");		
-		//JTextField tfRUT = new JTextField();
-
 		JLabel labelNombre = new JLabel("Nombre : ");
-		//JTextField tfNombre = new JTextField();
-		
 		JLabel labelOcup = new JLabel("Ocupacion : ");
-		//JTextField tfOCup = new JTextField();
-		
 		JLabel labelCorreo = new JLabel("Correo : ");
-		//JTextField tfCorreo = new JTextField();
-		
 		JLabel labelTel = new JLabel("Telefono : ");
-		//JTextField tfTel = new JTextField();
-		
 		JLabel labelNbUsuario = new JLabel("Nombre de Usuario : ");
-		//JTextField tfNbUsuario = new JTextField();
-		
 		JLabel labelContr = new JLabel("Contraseña : ");
-		//JTextField tfContr = new JTextField();
-		
-		JLabel labelMoros = new JLabel("Morosidad (false/ true) : "); // G
-		//JTextField tfMoros = new JTextField();
+		JLabel labelMoros = new JLabel("Morosidad (false/ true) : ");
 		
 		JButton buttonRegresar = new JButton("Regresar");
 		botones.add(buttonRegresar);
@@ -427,21 +460,13 @@ public class Vista extends JFrame {
 		// TODO : REFACTOR with for loop?!
 		
 		p0.add(labelRUT);
-		//p1.add(tfRUT);
 		p0.add(labelNombre);
-		//p1.add(tfNombre);
 		p0.add(labelOcup);
-		//p1.add(tfOCup);
 		p0.add(labelCorreo);
-		//p1.add(tfCorreo);
 		p0.add(labelTel);
-		//p1.add(tfTel);
 		p0.add(labelNbUsuario);
-		//p1.add(tfNbUsuario);
 		p0.add(labelContr);
-		//p1.add(tfContr);
 		p0.add(labelMoros);
-		//p1.add(tfMoros);
 		
 		p2.add(buttonRegresar);
 		p2.add(buttonContinuar);
@@ -449,7 +474,6 @@ public class Vista extends JFrame {
 		// Add panels to general Layouts
 		add(p0, BorderLayout.WEST);
 		add(p1, BorderLayout.CENTER);
-	    //add(p1, BorderLayout.NORTH);
 	    add(p2, BorderLayout.SOUTH);
 	}
 	
@@ -486,6 +510,10 @@ public class Vista extends JFrame {
 	}
 	*/
 	
+    //************************************//
+    // View for the Insertar Cuentas part //
+    //************************************//
+
 	public void crearInsCuentaDetail(String choice) {
 		getContentPane().setLayout(new BorderLayout());
 		
@@ -496,7 +524,6 @@ public class Vista extends JFrame {
 		// Grid Layout # rows, # columns
 		p1.setLayout(new GridLayout(8,1));
 		p2.setLayout(new GridLayout(8,1));
-		//p1.setLayout(new GridLayout(8,3)); // CHANGE TO ,2 to see if it changes smth ? 
 		p3.setLayout(new GridLayout(1,2));
 		
 		/*
@@ -504,6 +531,9 @@ public class Vista extends JFrame {
 		 *  textfields textos to be able to get them in 
 		 *  the Controller + adding textfields to panel
 		 */
+		// The number of textfields changes depending on whether we are creating
+		// a cuentaCD o cuentaTC, this is to be able to factorize all the rest
+		// since it's very similar
 		int nbTf=0;
 		if (choice.equals("CD")) nbTf = 4;
 		else if (choice.equals("TC")) nbTf = 6;
@@ -513,9 +543,7 @@ public class Vista extends JFrame {
             textos.add(tf);
 			p2.add(tf);
 		}
-		
-		// Creating Labels + Buttons
-		
+				
 		// Creating common labels
 		JLabel labelNumCuenta = new JLabel("Numero de Cuenta : ");		
 		JLabel labelCategoria = new JLabel("Categoria : ");
@@ -530,7 +558,6 @@ public class Vista extends JFrame {
 		
 		//if (optCredito.isSelected()) {
 		if (choice.equals("TC")) {
-		// Bug : textfields already created + doesn't reload page
 			// TC Credito only
 			JLabel labelDiaPago = new JLabel("Dia de Pago (TC) : ");
 			JLabel labelDeuda = new JLabel("Deuda* (TC) : ");
@@ -543,6 +570,7 @@ public class Vista extends JFrame {
 		JLabel labelInfo = new JLabel("* si NO son nuevas cuentas");
 		p1.add(labelInfo);
 
+		// Creating buttons
 		JButton buttonRegresar = new JButton("Regresar");
 		botones.add(buttonRegresar);
         buttonRegresar.setPreferredSize(new Dimension(110,110));

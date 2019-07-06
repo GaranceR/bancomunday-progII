@@ -49,26 +49,29 @@ public class Sesion {
         c.cargarCredito(cuentasTC,cuentasTC_aux);
     }
     
-    public void Simulador() throws IOException{
-        
-        Banco Muday = new Banco();
-        // G : Why new Banco() if there is already a Bank as a private attribute ? 
+    public void Simulador() throws IOException{ 
         
         // G : TODO Display in Vista/GUI ? 
         
         System.out.println("Los Clientes son: "+clientes);
-        System.out.println("Las CuentasDebito son: "+cuentasCD_aux);
-        System.out.println("Las CuentasCredito son: "+cuentasTC_aux);
+        //System.out.println("Las CuentasDebito aux son: "+cuentasCD_aux);
+        //System.out.println("Las CuentasCredito aux son: "+cuentasTC_aux);
+        
+        System.out.println("Las CuentasDebito son: "+cuentasCD);
+        System.out.println("Las CuentasCredito son: "+cuentasTC);
+        
+        System.out.println(this.getMuday());
         
         //System.out.println("\n Las Operaciones son: ");
         //test1.cargarSimulacion();
        
         //Operaciones
-        
+        /*
         Operaciones test2 = new Operaciones();
         System.out.println("El saldo antes de la operacion es: "+cuentasCD.get(0).getSaldo());
         test2.Abonar(cuentasCD, cuentasTC, Muday,"5000","CD10-1234");
         System.out.println("El saldo despues de la operacion es: "+cuentasCD.get(0).getSaldo());
+        */
         
         /****************
         // Testing Salida

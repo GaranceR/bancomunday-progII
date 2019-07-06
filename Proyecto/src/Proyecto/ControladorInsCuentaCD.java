@@ -9,14 +9,16 @@ public class ControladorInsCuentaCD implements ActionListener {
     private Sesion S;
     private Operaciones op;
     public ControladorInsCuentaCD(Sesion s,Vista v){
-        V=v;
-        S=s;
+        V = v;
+        S = s;
         for (JButton x:V.botones) {
             x.addActionListener(this);
         }
+        /*
         for (JRadioButton rb: V.radioButtons) {
         	rb.addActionListener(this);
         }
+        */
     }
     @Override
     public void actionPerformed(ActionEvent event) {

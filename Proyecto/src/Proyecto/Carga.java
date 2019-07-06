@@ -150,7 +150,7 @@ public class Carga {
                         operar.Abonar(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         break;
                     case "2":
-                        operar.Retirar(CD,Muday,list1.get(i).get(2),list1.get(i).get(0));
+                        operar.Retirar(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0));
                         break;
                     case "3":
                         if(list1.get(i).size() == 5){
@@ -158,17 +158,16 @@ public class Carga {
                         }
                         else{
                             operar.Pagar_Compra(CD,TC,Muday,list1.get(i).get(2),list1.get(i).get(0),list1.get(i).get(3));
-                            // G : falta secundo argumento List Tarjetas TC
                         }
                         break;
                     case "4":
                         operar.Comprar_Inversion(CD,TC,list1.get(i).get(2),list1.get(i).get(0));
                         break;
                     case "5":
-                        operar.Recibir_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
+                        operar.Recibir_Transferencia(CD, TC, list1.get(i).get(2),list1.get(i).get(0),Muday);
                         break;
                     case "6":
-                        operar.Realizar_Transferencia(CD,list1.get(i).get(2),list1.get(i).get(0),Muday);
+                        operar.Realizar_Transferencia(CD, TC, list1.get(i).get(2),list1.get(i).get(0),Muday);
                         break;
                     case "7":
                         //operar.Generar_Corte();

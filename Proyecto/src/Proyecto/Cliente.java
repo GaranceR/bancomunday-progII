@@ -23,7 +23,6 @@ public class Cliente {
 	private String contrasena;
 	private String morosidad;
 	
-	// G
 	// Constructors
 	public Cliente() {
 		this.RUT = null;

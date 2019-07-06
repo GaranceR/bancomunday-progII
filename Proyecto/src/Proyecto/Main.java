@@ -6,18 +6,11 @@ import java.text.ParseException;
 public class Main {
 
     public static void main(String[] arg) throws IOException, ParseException{
-        
-
-        //ArrayList<Cliente> clientes = new ArrayList<>();
-        
+                
     	Vista vista = new Vista(0);
         Sesion session1 = new Sesion();
         Controlador cont = new Controlador(session1,vista);
         cont.iniciarVista();
-        
-
-
-
-
+  
     }
 }
