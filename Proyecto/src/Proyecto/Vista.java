@@ -587,6 +587,6 @@ public class Vista extends JFrame {
 		add(p1, BorderLayout.WEST);
 		add(p2, BorderLayout.CENTER);
 	    add(p3, BorderLayout.SOUTH);
-
 	}
+
 }
