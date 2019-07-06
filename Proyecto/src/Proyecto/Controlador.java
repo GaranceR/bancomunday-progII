@@ -132,5 +132,34 @@ public class Controlador implements ActionListener {
                 v.textos.get(0).setText("");
             }
         }
+        
+        // Insertar Cuenta
+        else if ((v.botones.get(8) == evento.getSource())) {
+        	aux = new Vista(7);
+            ControladorInsCuenta op=new ControladorInsCuenta(S,aux);
+        	iniciarVista(aux);
+        	if(aux.getValido()==1){ 	
+                v.labelPanel.setText("  Exito...");
+                v.textos.get(0).setText("Sin error");
+            }
+            else if(aux.getValido()==0){
+                v.labelPanel.setText("  Error...");
+                v.textos.get(0).setText("");
+            }
+        }
+        // Insertar Cliente
+        else if ((v.botones.get(9) == evento.getSource())) {
+        	aux = new Vista(8);
+            ControladorInsCliente op=new ControladorInsCliente(S,aux);
+        	iniciarVista(aux);
+        	if(aux.getValido()==1){ 	
+                v.labelPanel.setText("  Exito...");
+                v.textos.get(0).setText("Sin error");
+            }
+            else if(aux.getValido()==0){
+                v.labelPanel.setText("  Error...");
+                v.textos.get(0).setText("");
+            }
+        }
     }
 }
